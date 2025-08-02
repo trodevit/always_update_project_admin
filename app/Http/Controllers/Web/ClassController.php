@@ -50,6 +50,7 @@ class ClassController extends Controller
     public function show(string $id)
     {
         $class = AddClass::find($id);
+
         return view('classes.show', ['class' => $class]);
     }
 
@@ -67,7 +68,13 @@ class ClassController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = $request->validate([
+            'class_name'=>'required',
+        ]);
+
+        $class = AddClass::find($id)->update($data);
+
+        return redirect()->route('class.show',['id'=>$id]);
     }
 
     /**

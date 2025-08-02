@@ -40,13 +40,12 @@
                             <span>Add Courses</span>
                         </a>
                     </li><!--end nav-item-->
-{{--                    <li class="nav-item">--}}
-{{--                        <a class="nav-link" href="cards.html">--}}
-{{--                            <i class="iconoir-credit-cards menu-icon"></i>--}}
-{{--                            <span>Cards</span>--}}
-{{--                            <span class="badge text-bg-pink ms-auto">02</span>--}}
-{{--                        </a>--}}
-{{--                    </li><!--end nav-item-->--}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('suggestion.create')}}">
+                            <i class="iconoir-credit-cards menu-icon"></i>
+                            <span>Suggestion</span>
+                        </a>
+                    </li><!--end nav-item-->
 {{--                    <li class="nav-item">--}}
 {{--                        <a class="nav-link" href="apps-chat.html">--}}
 {{--                            <i class="iconoir-chat-bubble menu-icon"></i>--}}

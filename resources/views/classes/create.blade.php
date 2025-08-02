@@ -48,7 +48,7 @@
                                 <div class="col-sm-10">
                                     <input class="btn btn-primary" type="submit" value="Submit" id="example-search-input">
                                     <input class="btn btn-danger" type="button" value="Cancel" id="example-search-input">
-                                    <a class="btn btn-secondary" href="{{route('class.index', ['show' => 'true'])}}" id="example-search-input">
+                                    <a class="btn btn-info" href="{{route('class.index', ['show' => 'true'])}}" id="example-search-input">
                                         Show All Data
                                     </a>
                                 </div>
