@@ -14,6 +14,11 @@ class AdminAuthController extends Controller
         return view('welcome');
     }
 
+    public function loginPage()
+    {
+        return view('login');
+    }
+
     public function login(Request $request)
     {
         $request->validate([

@@ -12,6 +12,7 @@ use App\Http\Middleware\AdminAuth;
 
 Route::get('/',[AdminAuthController::class,'index'])->name('home');
 
+Route::get('/login',[AdminAuthController::class,'loginPage'])->name('loginPage');
 Route::post('/login',[AdminAuthController::class,'login'])->name('login');
 
 Route::group(['middleware' => AdminAuth::class], function () {
