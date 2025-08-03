@@ -35,7 +35,7 @@
                                 <div class="col-lg-6">
                                     <div class="mb-3 row">
                                         <div class="col-sm-10">
-                                            <input class="form-control" type="hidden" name="check" value="suggestion" id="example-text-input">
+                                            <input class="form-control" type="hidden" name="check" value="result" id="example-text-input">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -58,11 +58,34 @@
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label for="example-text-input" class="col-sm-2 col-form-label text-end">Image Upload</label>
+                                        <label for="image-upload" class="col-sm-2 col-form-label text-end">
+                                            Image Upload <small class="text-danger">(Max 2MB)</small>
+                                        </label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" type="file" name="image" placeholder="(e.g., SSC, HSC, BSc)" id="example-text-input" accept="image/*">
+                                            <input class="form-control" type="file" name="image" id="image-upload" accept="image/*">
+                                            <small class="text-muted">Only images allowed (JPG, PNG, etc.). Max size: 2MB.</small>
                                         </div>
                                     </div>
+
+                                    <script>
+                                        document.addEventListener('DOMContentLoaded', function () {
+                                            const fileInput = document.querySelector('input[name="image"]');
+                                            const errorText = document.createElement('small');
+                                            errorText.classList.add('text-danger');
+                                            fileInput.parentElement.appendChild(errorText);
+
+                                            fileInput.addEventListener('change', function () {
+                                                const file = this.files[0];
+                                                if (file && file.size > 2 * 1024 * 1024) {
+                                                    errorText.textContent = 'Image size must be under 2MB.';
+                                                    this.value = ''; // Clear the file
+                                                } else {
+                                                    errorText.textContent = '';
+                                                }
+                                            });
+                                        });
+                                    </script>
+
                                     <div class="mb-3 row">
                                         <label for="example-text-input" class="col-sm-2 col-form-label text-end">PDF</label>
                                         <div class="col-sm-10">
@@ -81,7 +104,7 @@
                                         <div class="col-sm-10">
                                             <input class="btn btn-primary" type="submit" value="Submit" id="example-search-input">
                                             <input class="btn btn-danger" type="button" value="Cancel" id="example-search-input">
-                                            <a class="btn btn-info" href="{{route('suggestion.index')}}" id="example-search-input">
+                                            <a class="btn btn-info" href="{{route('result.index')}}" id="example-search-input">
                                                 Show All Data
                                             </a>
                                         </div>

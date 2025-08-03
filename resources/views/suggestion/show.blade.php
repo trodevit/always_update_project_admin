@@ -32,7 +32,7 @@
             </div>
         </div>
 
-        <a href="{{ route('suggestion.edit',['id'=>$common->id]) }}" class="btn btn-primary mt-4">Edit</a>
+        <a href="{{ route('common.edit',['type'=>$common->check,'id'=>$common->id]) }}" class="btn btn-primary mt-4">Edit</a>
         <a href="{{ route('suggestion.index') }}" class="btn btn-secondary mt-4">Back to Suggestions</a>
     </div>
 @endsection

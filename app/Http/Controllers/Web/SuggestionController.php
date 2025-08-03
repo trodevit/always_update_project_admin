@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\AddClass;
 use App\Models\Common;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class SuggestionController extends Controller
 {
@@ -37,35 +38,36 @@ class SuggestionController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'class_id',
-            'title'=>'required|string',
-            'description'=>'required|string',
-            'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg',
-            'pdf'=>'required|mimes:pdf',
-            'offical_url'=>'required|url',
-            'check'
+            'class_id' => 'required|integer|exists:add_classes,id',
+            'title' => 'required|string',
+            'description' => 'required|string',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            'pdf' => 'required|mimes:pdf',
+            'offical_url' => 'url',
+            'check' => 'required|string'
         ]);
 
         $data = $request->all();
-        if ($data['check'] == 'suggestion') {
+        $folder = in_array($data['check'], ['suggestion', 'scholarship', 'result', 'notice'])
+            ? $data['check']
+            : 'scholarship';
 
-            $pdfFile = $request->file('pdf');
-            $imageFile = $request->file('image');
+        $pdfFile = $request->file('pdf');
+        $imageFile = $request->file('image');
 
-            $pdfFileName = $pdfFile->getClientOriginalName();
-            $imageFileName = time() . '_' . $imageFile->getClientOriginalName();
+        $pdfFileName = $pdfFile->getClientOriginalName();
+        $imageFileName = time() . '_' . $imageFile->getClientOriginalName();
 
-            $pdfPath = 'suggestion/pdfs/' . $pdfFileName;
-            $imagePath = 'suggestion/images/' . $imageFileName;
+        $pdfPath = "$folder/pdfs/$pdfFileName";
+        $imagePath = "$folder/images/$imageFileName";
 
-            $pdfFile->move(public_path('suggestion/pdfs'), $pdfFileName);
-            $imageFile->move(public_path('suggestion/images'), $imageFileName);
+        $pdfFile->move(public_path("$folder/pdfs"), $pdfFileName);
+        $imageFile->move(public_path("$folder/images"), $imageFileName);
 
-            $data['pdf'] = $pdfPath;
-            $data['image'] = $imagePath;
+        $data['pdf'] = $pdfPath;
+        $data['image'] = $imagePath;
 
-            $suggestion = Common::create($data);
-        }
+        Common::create($data);
 
         return redirect()->back();
     }
@@ -73,86 +75,84 @@ class SuggestionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $type, string $id)
     {
         $common = Common::join('add_classes','add_classes.id','=','commons.class_id')
             ->select('commons.*','add_classes.class_name as class_name')->find($id);
 
-        if ($common->check == 'suggestion') {
-            return view('suggestion.show', ['common' => $common]);
-        }
+            return view("{$type}.show", ['common' => $common]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $type, string $id)
     {
         $class = AddClass::all();
         $common = Common::join('add_classes','add_classes.id','=','commons.class_id')
             ->select('commons.*','add_classes.class_name as class_name')->find($id);
 
-        if ($common->check == 'suggestion') {
-            return view('suggestion.edit', ['common' => $common,'class'=>$class]);
-        }
+            return view("{$type}.edit", ['common' => $common,'class'=>$class]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $type, string $id)
     {
-        $request->validate([
-            'class_id'=>'sometimes',
-            'title'=>'sometimes|required|string',
-            'description'=>'sometimes|required|string',
-            'image'=>'sometimes|required|image|mimes:jpeg,png,jpg,gif,svg',
-            'pdf'=>'sometimes|required|mimes:pdf',
-            'offical_url'=>'sometimes|required|url',
-            'check'
-        ]);
+        try {
+            $request->validate([
+                'class_id' => 'sometimes|required|integer|exists:add_classes,id',
+                'title' => 'sometimes|required|string',
+                'description' => 'sometimes|required|string',
+                'image' => 'sometimes|required|image|mimes:jpeg,png,jpg,gif,svg',
+                'pdf' => 'sometimes|required|mimes:pdf',
+                'offical_url' => 'sometimes|url',
+                'check' => 'sometimes|required|string'
+            ]);
 
-        $data = $request->all();
+            $data = $request->all();
+            $common = Common::find($id);
 
-        $common = Common::find($id);
+            $folder = in_array($data['check'], ['suggestion', 'scholarship', 'result', 'notice'])
+                ? $data['check']
+                : 'scholarship';
 
-        if ($data['check'] == 'suggestion') {
             if ($request->hasFile('pdf')) {
                 if (file_exists(public_path($common->pdf))) {
                     unlink(public_path($common->pdf));
                 }
-
                 $pdfFile = $request->file('pdf');
                 $pdfFileName = $pdfFile->getClientOriginalName();
-                $pdfPath = 'notice_board/pdfs/' . $pdfFileName;
-                $pdfFile->move(public_path('notice_board/pdfs'), $pdfFileName);
-
+                $pdfPath = "$folder/pdfs/$pdfFileName";
+                $pdfFile->move(public_path("$folder/pdfs"), $pdfFileName);
                 $data['pdf'] = $pdfPath;
             }
 
             if ($request->hasFile('image')) {
                 if (file_exists(public_path($common->image))) {
                     unlink(public_path($common->image));
-
-                    $imageFile = $request->file('image');
-                    $imageFileName = time() . '_' . $imageFile->getClientOriginalName();
-                    $imagePath = 'notice_board/images/' . $imageFileName;
-                    $imageFile->move(public_path('notice_board/images'), $imageFileName);
-
-                    $data['image'] = $imagePath;
                 }
+                $imageFile = $request->file('image');
+                $imageFileName = time() . '_' . $imageFile->getClientOriginalName();
+                $imagePath = "$folder/images/$imageFileName";
+                $imageFile->move(public_path("$folder/images"), $imageFileName);
+                $data['image'] = $imagePath;
             }
 
             $common->update($data);
-        }
 
-        return redirect()->back();
+            return redirect()->route('common.show', ['type' => $common->check, 'id' => $common->id]);
+        } catch (\Exception $e) {
+            Log::error('Unexpected error: ' . $e->getMessage());
+            return response()->json('Something went wrong: ' . $e->getMessage());
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $type, string $id)
     {
         $common = Common::find($id);
 

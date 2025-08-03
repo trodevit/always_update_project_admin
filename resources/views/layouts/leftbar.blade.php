@@ -46,24 +46,24 @@
                             <span>Suggestion</span>
                         </a>
                     </li><!--end nav-item-->
-{{--                    <li class="nav-item">--}}
-{{--                        <a class="nav-link" href="apps-chat.html">--}}
-{{--                            <i class="iconoir-chat-bubble menu-icon"></i>--}}
-{{--                            <span>Chat</span>--}}
-{{--                        </a>--}}
-{{--                    </li><!--end nav-item-->--}}
-{{--                    <li class="nav-item">--}}
-{{--                        <a class="nav-link" href="apps-contact-list.html">--}}
-{{--                            <i class="iconoir-community menu-icon"></i>--}}
-{{--                            <span>Contact List</span>--}}
-{{--                        </a>--}}
-{{--                    </li><!--end nav-item-->--}}
-{{--                    <li class="nav-item">--}}
-{{--                        <a class="nav-link" href="apps-calendar.html">--}}
-{{--                            <i class="iconoir-calendar menu-icon"></i>--}}
-{{--                            <span>Calendar</span>--}}
-{{--                        </a>--}}
-{{--                    </li><!--end nav-item-->--}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('scholarship.create')}}">
+                            <i class="iconoir-chat-bubble menu-icon"></i>
+                            <span>Scholarship</span>
+                        </a>
+                    </li><!--end nav-item-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('result.create')}}">
+                            <i class="iconoir-community menu-icon"></i>
+                            <span>Result</span>
+                        </a>
+                    </li><!--end nav-item-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('notice.create')}}">
+                            <i class="iconoir-calendar menu-icon"></i>
+                            <span>Notice</span>
+                        </a>
+                    </li><!--end nav-item-->
 {{--                    <li class="nav-item">--}}
 {{--                        <a class="nav-link" href="apps-invoice.html">--}}
 {{--                            <i class="iconoir-paste-clipboard menu-icon"></i>--}}

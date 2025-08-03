@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\AdminAuthController;
 use App\Http\Controllers\Web\DashboardController;
 use App\Http\Controllers\Web\SuggestionController;
+use App\Http\Controllers\Web\Scholarship;
+use App\Http\Controllers\Web\Result;
+use App\Http\Controllers\Web\Notice;
 
 Route::get('/',[AdminAuthController::class,'index'])->name('home');
 
@@ -23,7 +26,16 @@ Route::get('/class/delete/{id}',[ClassController::class,'destroy'])->name('class
 Route::get('/suggestion/index',[SuggestionController::class,'index'])->name('suggestion.index');
 Route::get('/suggestion/create',[SuggestionController::class,'create'])->name('suggestion.create');
 Route::post('/common/store',[SuggestionController::class,'store'])->name('common.store');
-Route::get('/suggestion/edit/{id}',[SuggestionController::class,'edit'])->name('suggestion.edit');
-Route::get('/suggestion/show/{id}',[SuggestionController::class,'show'])->name('suggestion.show');
-Route::post('/suggestion/update/{id}',[SuggestionController::class,'update'])->name('suggestion.update');
-Route::get('/suggestion/delete/{id}',[SuggestionController::class,'destroy'])->name('suggestion.delete');
+Route::get('/{type}/edit/{id}',[SuggestionController::class,'edit'])->name('common.edit');
+Route::get('/{type}/show/{id}',[SuggestionController::class,'show'])->name('common.show');
+Route::post('/{type}/update/{id}',[SuggestionController::class,'update'])->name('common.update');
+Route::get('/{type}/delete/{id}',[SuggestionController::class,'destroy'])->name('common.delete');
+
+Route::get('/scholarship/index',[Scholarship::class,'index'])->name('scholarship.index');
+Route::get('/scholarship/create',[Scholarship::class,'create'])->name('scholarship.create');
+
+Route::get('/result/index',[Result::class,'index'])->name('result.index');
+Route::get('/result/create',[Result::class,'create'])->name('result.create');
+
+Route::get('/notice/index',[Notice::class,'index'])->name('notice.index');
+Route::get('/notice/create',[Notice::class,'create'])->name('notice.create');

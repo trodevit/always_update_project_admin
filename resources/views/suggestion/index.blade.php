@@ -50,10 +50,10 @@
                         </td>
                         <td>{{ $class->created_at->format('d M Y') }}</td>
                         <td>
-                            <a href="{{route('suggestion.show',['id'=>$class->id])}}" class="btn btn-primary">Show Suggestion</a>
+                            <a href="{{route('common.show',['type'=>$class->check,'id'=>$class->id])}}" class="btn btn-primary">Show Suggestion</a>
                         </td>
                         <td>
-                            <a href="{{route('suggestion.delete',['id'=>$class->id])}}" class="btn btn-danger">Delete</a>
+                            <a href="{{route('common.delete',['type'=>$class->check,'id'=>$class->id])}}" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
                 @endforeach
