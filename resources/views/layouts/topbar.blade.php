@@ -9,12 +9,12 @@
                         <i class="iconoir-menu"></i>
                     </button>
                 </li>
-                <li class="hide-phone app-search">
-                    <form role="search" action="#" method="get">
-                        <input type="search" name="search" class="form-control top-search mb-0" placeholder="Search here...">
-                        <button type="submit"><i class="iconoir-search"></i></button>
-                    </form>
-                </li>
+{{--                <li class="hide-phone app-search">--}}
+{{--                    <form role="search" action="#" method="get">--}}
+{{--                        <input type="search" name="search" class="form-control top-search mb-0" placeholder="Search here...">--}}
+{{--                        <button type="submit"><i class="iconoir-search"></i></button>--}}
+{{--                    </form>--}}
+{{--                </li>--}}
             </ul>
             <ul class="topbar-item list-unstyled d-inline-flex align-items-center mb-0">
 
@@ -217,9 +217,9 @@
                 </li>
 
                 <li class="dropdown topbar-item">
-                    <a class="nav-link dropdown-toggle arrow-none nav-icon" data-bs-toggle="dropdown" href="#" role="button"
+                    <a class="nav-link dropdown-toggle arrow-none nav-icon" href="{{route('logout')}}" role="button"
                        aria-haspopup="false" aria-expanded="false" data-bs-offset="0,19">
-                        <img src="{{asset('assets/images/users/avatar-1.jpg')}}" alt="" class="thumb-md rounded-circle">
+                        <i class="las la-power-off fs-18 me-1 align-text-bottom"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end py-0">
                         <div class="d-flex align-items-center dropdown-item py-2 bg-secondary-subtle">
@@ -240,7 +240,7 @@
                         <a class="dropdown-item" href="pages-profile.html"><i class="las la-lock fs-18 me-1 align-text-bottom"></i> Security</a>
                         <a class="dropdown-item" href="pages-faq.html"><i class="las la-question-circle fs-18 me-1 align-text-bottom"></i> Help Center</a>
                         <div class="dropdown-divider mb-0"></div>
-                        <a class="dropdown-item text-danger" href="auth-login.html"><i class="las la-power-off fs-18 me-1 align-text-bottom"></i> Logout</a>
+                        <a class="dropdown-item text-danger" href="{{route('logout')}}"><i class="las la-power-off fs-18 me-1 align-text-bottom"></i> Logout</a>
                     </div>
                 </li>
             </ul><!--end topbar-nav-->

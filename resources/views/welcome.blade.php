@@ -5,7 +5,7 @@
 
 
     <meta charset="utf-8" />
-    <title>Login | Approx - Admin & Dashboard Template</title>
+    <title>Login | {{config('app.name')}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="" name="author" />
@@ -37,8 +37,8 @@
                                     <a href="#" class="logo logo-admin">
                                         <img src="{{asset('assets/images/logo-sm.png')}}" height="50" alt="logo" class="auth-logo">
                                     </a>
-                                    <h4 class="mt-3 mb-1 fw-semibold text-white fs-18">Let's Get Started Approx</h4>
-                                    <p class="text-muted fw-medium mb-0">Sign in to continue to Approx.</p>
+                                    <h4 class="mt-3 mb-1 fw-semibold text-white fs-18">Let's Get Started {{config('app.name')}}</h4>
+                                    <p class="text-muted fw-medium mb-0">Sign in to continue to {{config('app.name')}}.</p>
                                 </div>
                             </div>
                             <div class="card-body pt-0">

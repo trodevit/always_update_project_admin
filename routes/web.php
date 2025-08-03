@@ -8,12 +8,16 @@ use App\Http\Controllers\Web\SuggestionController;
 use App\Http\Controllers\Web\Scholarship;
 use App\Http\Controllers\Web\Result;
 use App\Http\Controllers\Web\Notice;
+use App\Http\Middleware\AdminAuth;
 
 Route::get('/',[AdminAuthController::class,'index'])->name('home');
 
 Route::post('/login',[AdminAuthController::class,'login'])->name('login');
 
-Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
+Route::group(['middleware' => AdminAuth::class], function () {
+    Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
+
+
 
 Route::get('/class',[ClassController::class,'index'])->name('class.index');
 Route::get('/class/create',[ClassController::class,'create'])->name('class.create');
@@ -39,3 +43,6 @@ Route::get('/result/create',[Result::class,'create'])->name('result.create');
 
 Route::get('/notice/index',[Notice::class,'index'])->name('notice.index');
 Route::get('/notice/create',[Notice::class,'create'])->name('notice.create');
+
+Route::get('/logout',[AdminAuthController::class,'logout'])->name('logout');
+});

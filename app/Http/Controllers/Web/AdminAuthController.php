@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class AdminAuthController extends Controller
 {
@@ -31,6 +32,13 @@ class AdminAuthController extends Controller
             return response()->json(['message' => 'Invalid credentials'], 401);
         }
 
+        Session::put('admin', true);
+
         return redirect()->route('dashboard');
+    }
+
+    public function logout(){
+        Session::forget('admin');
+        return redirect()->route('home');
     }
 }
