@@ -39,7 +39,7 @@
                 </li>
 
                 <li class="dropdown topbar-item">
-                    <a class="nav-link dropdown-toggle arrow-none nav-icon" data-bs-toggle="dropdown" href="#" role="button"
+                    <a class="nav-link dropdown-toggle arrow-none nav-icon" href="#" role="button"
                        aria-haspopup="false" aria-expanded="false" data-bs-offset="0,19">
                         <i class="iconoir-bell"></i>
                         <span class="alert-badge"></span>
