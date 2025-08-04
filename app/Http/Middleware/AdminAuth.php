@@ -17,7 +17,7 @@ class AdminAuth
     public function handle(Request $request, Closure $next): Response
     {
         if (!Session::get('admin')) {
-            return redirect()->route('home');
+            return redirect()->route('loginPage')->withErrors(['Your session has expired. Please log in again.']);
         }
         return $next($request);
     }
