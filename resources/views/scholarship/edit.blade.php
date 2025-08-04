@@ -54,7 +54,7 @@
                                     <div class="mb-3 row">
                                         <label for="example-text-input" class="col-sm-2 col-form-label text-end">Title</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" type="text" name="title" value="{{$common->title}}" id="example-text-input">
+                                            <input class="form-control" type="text" name="title" value="{{old('title',$common->title)}}" id="example-text-input">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -94,7 +94,7 @@
                                     <div class="mb-3 row">
                                         <label for="example-text-input" class="col-sm-2 col-form-label text-end">Short Description</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" type="text" name="description" value="{{$common->description}}" id="example-text-input">
+                                            <input class="form-control" type="text" name="description" value="{{old('description',$common->description)}}" id="example-text-input">
                                         </div>
                                     </div>
                                 </div>

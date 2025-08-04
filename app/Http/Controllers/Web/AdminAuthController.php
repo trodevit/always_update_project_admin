@@ -30,20 +30,20 @@ class AdminAuthController extends Controller
         $envPasswordHash = env('ADMIN_PASSWORD');
 
         if ($request->email !== $envEmail) {
-            return response()->json(['message' => 'Invalid credentials'], 401);
+            return redirect()->back()->withErrors(['Please enter valid email'])->withInput();
         }
 
         if (!Hash::check($request->password, $envPasswordHash)) {
-            return response()->json(['message' => 'Invalid credentials'], 401);
+            return redirect()->back()->withErrors(['Wrong Password'])->withInput();
         }
 
         Session::put('admin', true);
 
-        return redirect()->route('dashboard');
+        return redirect()->route('dashboard')->with('success', 'Welcome back');
     }
 
     public function logout(){
         Session::forget('admin');
-        return redirect()->route('home');
+        return redirect()->route('loginPage')->with('success', 'You have been logged out');
     }
 }

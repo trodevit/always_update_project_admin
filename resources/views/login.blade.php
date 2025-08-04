@@ -44,14 +44,33 @@
                             <div class="card-body pt-0">
                                 <form class="my-4" action="{{route('login')}}" method="post">
                                     @csrf
+
+                                    @if (session('success'))
+                                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                            {{ session('success') }}
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                        </div>
+                                    @endif
+
+                                    @if ($errors->any())
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                            <ul class="mb-0">
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                        </div>
+                                    @endif
+
                                     <div class="form-group mb-2">
                                         <label class="form-label" for="username">Email</label>
-                                        <input type="email" class="form-control" id="username" name="email" placeholder="Enter username">
+                                        <input type="email" class="form-control" id="username" name="email" value="{{old('email')}}" placeholder="Enter username">
                                     </div><!--end form-group-->
 
                                     <div class="form-group">
                                         <label class="form-label" for="userpassword">Password</label>
-                                        <input type="password" class="form-control" name="password" id="userpassword" placeholder="Enter password">
+                                        <input type="password" class="form-control" name="password" value="{{old('password')}}" id="userpassword" placeholder="Enter password">
                                     </div><!--end form-group-->
 
 

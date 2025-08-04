@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ErrorOccurred;
 use App\Models\AddClass;
 use App\Models\Common;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class SuggestionController extends Controller
 {
@@ -47,29 +49,34 @@ class SuggestionController extends Controller
             'check' => 'required|string'
         ]);
 
-        $data = $request->all();
-        $folder = in_array($data['check'], ['suggestion', 'scholarship', 'result', 'notice'])
-            ? $data['check']
-            : 'scholarship';
+        try {
+            $data = $request->all();
+            $folder = in_array($data['check'], ['suggestion', 'scholarship', 'result', 'notice'])
+                ? $data['check']
+                : 'scholarship';
 
-        $pdfFile = $request->file('pdf');
-        $imageFile = $request->file('image');
+            $pdfFile = $request->file('pdf');
+            $imageFile = $request->file('image');
 
-        $pdfFileName = $pdfFile->getClientOriginalName();
-        $imageFileName = time() . '_' . $imageFile->getClientOriginalName();
+            $pdfFileName = $pdfFile->getClientOriginalName();
+            $imageFileName = time() . '_' . $imageFile->getClientOriginalName();
 
-        $pdfPath = "$folder/pdfs/$pdfFileName";
-        $imagePath = "$folder/images/$imageFileName";
+            $pdfPath = "$folder/pdfs/$pdfFileName";
+            $imagePath = "$folder/images/$imageFileName";
 
-        $pdfFile->move(public_path("$folder/pdfs"), $pdfFileName);
-        $imageFile->move(public_path("$folder/images"), $imageFileName);
+            $pdfFile->move(public_path("$folder/pdfs"), $pdfFileName);
+            $imageFile->move(public_path("$folder/images"), $imageFileName);
 
-        $data['pdf'] = $pdfPath;
-        $data['image'] = $imagePath;
+            $data['pdf'] = $pdfPath;
+            $data['image'] = $imagePath;
 
-        Common::create($data);
+            Common::create($data);
 
-        return redirect()->back();
+            return redirect()->back()->with('success', $data['check'] . 'created successfully');
+        }
+        catch (\Exception $exception){
+            return redirect()->back()->withErrors(['Something went wrong', $exception->getMessage()])->withInput();
+        }
     }
 
     /**
@@ -100,7 +107,7 @@ class SuggestionController extends Controller
      */
     public function update(Request $request, string $type, string $id)
     {
-        try {
+
             $request->validate([
                 'class_id' => 'sometimes|required|integer|exists:add_classes,id',
                 'title' => 'sometimes|required|string',
@@ -110,7 +117,7 @@ class SuggestionController extends Controller
                 'offical_url' => 'sometimes|url',
                 'check' => 'sometimes|required|string'
             ]);
-
+        try {
             $data = $request->all();
             $common = Common::find($id);
 
@@ -142,10 +149,11 @@ class SuggestionController extends Controller
 
             $common->update($data);
 
-            return redirect()->route('common.show', ['type' => $common->check, 'id' => $common->id]);
+            return redirect()->route('common.show', ['type' => $common->check, 'id' => $common->id])->with('success', 'updated successfully');
         } catch (\Exception $e) {
             Log::error('Unexpected error: ' . $e->getMessage());
-            return response()->json('Something went wrong: ' . $e->getMessage());
+            Mail::to('rubayetislam16@gmail.com')->send(new ErrorOccurred($e->getMessage(), $e->getTraceAsString()));
+            return redirect()->back()->withErrors(['Something went wrong',$e->getMessage()])->withInput();
         }
     }
 
