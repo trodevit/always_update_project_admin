@@ -9,17 +9,11 @@
                         <i class="iconoir-menu"></i>
                     </button>
                 </li>
-{{--                <li class="hide-phone app-search">--}}
-{{--                    <form role="search" action="#" method="get">--}}
-{{--                        <input type="search" name="search" class="form-control top-search mb-0" placeholder="Search here...">--}}
-{{--                        <button type="submit"><i class="iconoir-search"></i></button>--}}
-{{--                    </form>--}}
-{{--                </li>--}}
             </ul>
             <ul class="topbar-item list-unstyled d-inline-flex align-items-center mb-0">
 
                 <li class="dropdown">
-                    <a class="nav-link dropdown-toggle arrow-none nav-icon" data-bs-toggle="dropdown" href="#" role="button"
+                    <a class="nav-link dropdown-toggle arrow-none nav-icon" href="#" role="button"
                        aria-haspopup="false" aria-expanded="false" data-bs-offset="0,19">
                         <img src="{{asset('assets/images/flags/us_flag.jpg')}}" alt="" class="thumb-sm rounded-circle">
                     </a>
