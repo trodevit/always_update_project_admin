@@ -45,5 +45,7 @@ Route::get('/result/create',[Result::class,'create'])->name('result.create');
 Route::get('/notice/index',[Notice::class,'index'])->name('notice.index');
 Route::get('/notice/create',[Notice::class,'create'])->name('notice.create');
 
+//Route::get('/class/show/{id}',[ClassController::class,'showContent'])->name('class.showContent');
+
 Route::get('/logout',[AdminAuthController::class,'logout'])->name('logout');
 });

@@ -3,11 +3,33 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\AddClass;
 use App\Models\Common;
 use Illuminate\Http\Request;
 
 class CommonController extends Controller
 {
+    public function class_list()
+    {
+        $class_list = AddClass::all();
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Class',
+            'data' => $class_list
+        ],200);
+    }
+
+    public function class_detail(string $id, string $type)
+    {
+        $common = Common::where('check',$type)->where('class_id',$id)->get();
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Class',
+            'data' => $common
+        ]);
+    }
     public function index(string $type)
     {
         $common = Common::where('check',$type)

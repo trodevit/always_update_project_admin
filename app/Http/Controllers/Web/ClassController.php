@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\AddClass;
+use App\Models\Common;
 use Illuminate\Http\Request;
 
 class ClassController extends Controller
@@ -47,11 +48,22 @@ class ClassController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Request $request, string $id)
     {
         $class = AddClass::find($id);
 
-        return view('classes.show', ['class' => $class]);
+        $classes = [];
+
+        if ($request->has('show') && in_array($request->show, ['suggestion', 'scholarship','notice','result'])) {
+            $classes = Common::where('class_id', $class->id)
+                ->where('check', $request->show)
+                ->join('add_classes', 'add_classes.id', '=', 'commons.class_id')
+                ->select('commons.*', 'add_classes.class_name')
+                ->get();
+        }
+
+
+        return view('classes.show', ['class' => $class, 'classes' => $classes]);
     }
 
     /**
