@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ErrorOccurred;
 use App\Models\AddClass;
 use App\Models\Common;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ClassController extends Controller
 {
@@ -94,10 +96,27 @@ class ClassController extends Controller
      */
     public function destroy(string $id)
     {
-        $class = AddClass::find($id);
+        try {
+            $class = AddClass::findOrFail($id); // 404 if not found
 
-        $class->delete();
+            $class->delete();
 
-        return redirect()->back();
+            return redirect()->back();
+
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Class not found.'
+            ], 404);
+
+        } catch (\Exception $e) {
+            Mail::to('rubayetislam16@gmail.com')->send(new ErrorOccurred($e->getMessage(), $e->getTraceAsString()));
+            return response()->json([
+                'status' => false,
+                'message' => 'An error occurred while deleting the class.',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
+
 }
