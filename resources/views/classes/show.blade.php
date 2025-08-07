@@ -29,10 +29,9 @@
                         <th>Description</th>
                         <th>Image</th>
                         <th>Show PDF</th>
-{{--                        @if($classes->check == 'notice')--}}
-                            <th>Official URL</th>
-{{--                        @endif--}}
+                        <th>Official URL</th>
                         <th>Created At</th>
+                        <th>Show Info</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
@@ -64,6 +63,9 @@
                                 @endif
                             </td>
                             <td>{{ $class->created_at->format('d M Y') }}</td>
+                            <td>
+                                <a href="{{route('common.show',['id'=>$class->id,'type'=>$class->check])}}" class="btn btn-info">Show Info</a>
+                            </td>
                             <td>
                                 <a href="{{route('common.edit',['id'=>$class->id,'type'=>$class->check])}}" class="btn btn-primary">Edit</a>
                             </td>
