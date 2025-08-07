@@ -110,7 +110,7 @@ class ClassController extends Controller
             ], 404);
 
         } catch (\Exception $e) {
-            Mail::to('rubayetislam16@gmail.com')->send(new ErrorOccurred($e->getMessage(), $e->getTraceAsString()));
+//            Mail::to('rubayetislam16@gmail.com')->send(new ErrorOccurred($e->getMessage(), $e->getTraceAsString()));
             return response()->json([
                 'status' => false,
                 'message' => 'An error occurred while deleting the class.',

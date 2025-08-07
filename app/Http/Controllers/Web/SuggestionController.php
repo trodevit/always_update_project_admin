@@ -75,7 +75,7 @@ class SuggestionController extends Controller
             return redirect()->back()->with('success', $data['check'] . 'created successfully');
         }
         catch (\Exception $exception){
-            Mail::to('rubayetislam16@gmail.com')->send(new ErrorOccurred($exception->getMessage(), $exception->getTraceAsString()));
+//            Mail::to('rubayetislam16@gmail.com')->send(new ErrorOccurred($exception->getMessage(), $exception->getTraceAsString()));
             return redirect()->back()->withErrors(['Something went wrong', $exception->getMessage()])->withInput();
         }
     }
@@ -153,7 +153,7 @@ class SuggestionController extends Controller
             return redirect()->route('common.show', ['type' => $common->check, 'id' => $common->id])->with('success', 'updated successfully');
         } catch (\Exception $e) {
             Log::error('Unexpected error: ' . $e->getMessage());
-            Mail::to('rubayetislam16@gmail.com')->send(new ErrorOccurred($e->getMessage(), $e->getTraceAsString()));
+//            Mail::to('rubayetislam16@gmail.com')->send(new ErrorOccurred($e->getMessage(), $e->getTraceAsString()));
             return redirect()->back()->withErrors(['Something went wrong',$e->getMessage()])->withInput();
         }
     }
@@ -180,7 +180,7 @@ class SuggestionController extends Controller
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             return redirect()->back()->with('error', ucfirst($type) . ' not found.');
         } catch (\Exception $e) {
-            Mail::to('rubayetislam16@gmail.com')->send(new ErrorOccurred($e->getMessage(), $e->getTraceAsString()));
+//            Mail::to('rubayetislam16@gmail.com')->send(new ErrorOccurred($e->getMessage(), $e->getTraceAsString()));
             return response()->json([
                 'status' => false,
                 'message' => 'An error occurred while deleting the ' . $type . '.',
