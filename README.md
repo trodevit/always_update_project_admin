@@ -1,6 +1,8 @@
-
 ---
 ## 📚 API Documentation
+---
+
+📄 **Full Postman Docs:** [View on Postman](https://documenter.getpostman.com/view/47309125/2sB3BEmVXB)
 
 ---
 
