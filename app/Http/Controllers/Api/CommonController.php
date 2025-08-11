@@ -5,30 +5,24 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\AddClass;
 use App\Models\Common;
+use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
 
 class CommonController extends Controller
 {
+    use ApiResponse;
     public function class_list()
     {
         $class_list = AddClass::all();
 
-        return response()->json([
-            'status' => true,
-            'message' => 'Class',
-            'data' => $class_list
-        ],200);
+        return $this->successResponse($class_list,'Class List');
     }
 
     public function class_detail(string $id, string $type)
     {
         $common = Common::where('check',$type)->where('class_id',$id)->get();
 
-        return response()->json([
-            'status' => true,
-            'message' => 'Class',
-            'data' => $common
-        ]);
+        return $this->successResponse($common,'Class Detail');
     }
     public function index(string $type)
     {
@@ -37,11 +31,7 @@ class CommonController extends Controller
             ->select('commons.*','add_classes.class_name as class_name')
             ->get();
 
-        return response()->json([
-            'status' => true,
-            'message' => $type .' '. 'list',
-            'data' => $common
-        ],200);
+        return $this->successResponse($common,$type.' List');
     }
 
     public function show(string $type, string $id)
@@ -49,10 +39,6 @@ class CommonController extends Controller
         $common = Common::join('add_classes','add_classes.id','=','commons.class_id')
             ->select('commons.*','add_classes.class_name as class_name')->find($id);
 
-        return response()->json([
-            'status' => true,
-            'message' => $type .' '. 'list',
-            'data' => $common
-        ],200);
+        return $this->successResponse($common,$type.' List');
     }
 }
