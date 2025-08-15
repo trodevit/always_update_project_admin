@@ -20,12 +20,14 @@ class CommonController extends Controller
 
     public function class_detail(string $id, string $type)
     {
+//        dd($type,$id);
         $common = Common::where('check',$type)->where('class_id',$id)->get();
 
         return $this->successResponse($common,'Class Detail');
     }
     public function index(string $type)
     {
+//        dd($type);
         $common = Common::where('check',$type)
             ->join('add_classes','add_classes.id','=','commons.class_id')
             ->select('commons.*','add_classes.class_name as class_name')
@@ -36,6 +38,7 @@ class CommonController extends Controller
 
     public function show(string $type, string $id)
     {
+
         $common = Common::join('add_classes','add_classes.id','=','commons.class_id')
             ->select('commons.*','add_classes.class_name as class_name')->find($id);
 

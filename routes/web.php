@@ -9,6 +9,7 @@ use App\Http\Controllers\Web\Scholarship;
 use App\Http\Controllers\Web\Result;
 use App\Http\Controllers\Web\Notice;
 use App\Http\Middleware\AdminAuth;
+use App\Http\Controllers\Web\CourseController;
 
 Route::get('/',[AdminAuthController::class,'index'])->name('home');
 
@@ -45,6 +46,18 @@ Route::get('/result/create',[Result::class,'create'])->name('result.create');
 Route::get('/notice/index',[Notice::class,'index'])->name('notice.index');
 Route::get('/notice/create',[Notice::class,'create'])->name('notice.create');
 
+Route::get('/course/suggestion/index',[CourseController::class,'index'])->name('course.suggestion.index');
+Route::get('/course/formula/index',[CourseController::class,'formulaindex'])->name('course.formula.index');
+Route::get('/course/video/index',[CourseController::class,'videoindex'])->name('course.video.index');
+Route::get('/course/suggestion/create',[CourseController::class,'create'])->name('course.suggestion.create');
+Route::get('/course/formula/create',[CourseController::class,'formulacreate'])->name('course.formula.create');
+Route::get('/course/video/create',[CourseController::class,'videocreate'])->name('course.video.create');
+
+Route::post('/courses',[CourseController::class,'store'])->name('course.store');
+Route::get('/course/{type}/show/{id}',[CourseController::class,'show'])->name('course.show');
+Route::get('/course/{type}/edit/{id}',[CourseController::class,'edit'])->name('course.edit');
+Route::post('/courses/{type}/update/{id}',[CourseController::class,'update'])->name('updateData');
+Route::get('/courses/{type}/delete/{id}',[CourseController::class,'destroy'])->name('course.delete');
 //Route::get('/class/show/{id}',[ClassController::class,'showContent'])->name('class.showContent');
 
 Route::get('/logout',[AdminAuthController::class,'logout'])->name('logout');

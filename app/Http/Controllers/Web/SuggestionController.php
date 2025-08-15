@@ -43,8 +43,8 @@ class SuggestionController extends Controller
             'class_id' => 'required|integer|exists:add_classes,id',
             'title' => 'required|string',
             'description' => 'required|string',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
-            'pdf' => 'required|mimes:pdf',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg',
+            'pdf' => 'mimes:pdf',
             'offical_url' => 'url',
             'check' => 'required|string'
         ]);
@@ -55,20 +55,8 @@ class SuggestionController extends Controller
                 ? $data['check']
                 : 'scholarship';
 
-            $pdfFile = $request->file('pdf');
-            $imageFile = $request->file('image');
-
-            $pdfFileName = $pdfFile->getClientOriginalName();
-            $imageFileName = time() . '_' . $imageFile->getClientOriginalName();
-
-            $pdfPath = "$folder/pdfs/$pdfFileName";
-            $imagePath = "$folder/images/$imageFileName";
-
-            $pdfFile->move(public_path("$folder/pdfs"), $pdfFileName);
-            $imageFile->move(public_path("$folder/images"), $imageFileName);
-
-            $data['pdf'] = $pdfPath;
-            $data['image'] = $imagePath;
+            $data['pdf'] = $this->uploadFile($request->file('pdf'),$folder.'/pdfs');
+            $data['image'] = $this->uploadFile($request->file('image'),$folder.'/images');
 
             Common::create($data);
 
@@ -109,6 +97,7 @@ class SuggestionController extends Controller
     public function update(Request $request, string $type, string $id)
     {
 
+//        dd($request->all());
             $request->validate([
                 'class_id' => 'sometimes|required|integer|exists:add_classes,id',
                 'title' => 'sometimes|required|string',
@@ -127,25 +116,11 @@ class SuggestionController extends Controller
                 : 'scholarship';
 
             if ($request->hasFile('pdf')) {
-                if (file_exists(public_path($common->pdf))) {
-                    unlink(public_path($common->pdf));
-                }
-                $pdfFile = $request->file('pdf');
-                $pdfFileName = $pdfFile->getClientOriginalName();
-                $pdfPath = "$folder/pdfs/$pdfFileName";
-                $pdfFile->move(public_path("$folder/pdfs"), $pdfFileName);
-                $data['pdf'] = $pdfPath;
+                $data['pdf'] = $this->uploadFile($request->file('pdf'),$folder.'/pdfs',$common->pdf);
             }
 
             if ($request->hasFile('image')) {
-                if (file_exists(public_path($common->image))) {
-                    unlink(public_path($common->image));
-                }
-                $imageFile = $request->file('image');
-                $imageFileName = time() . '_' . $imageFile->getClientOriginalName();
-                $imagePath = "$folder/images/$imageFileName";
-                $imageFile->move(public_path("$folder/images"), $imageFileName);
-                $data['image'] = $imagePath;
+                $data['image'] = $this->uploadFile($request->file('image'),$folder.'/images',$common->image);
             }
 
             $common->update($data);

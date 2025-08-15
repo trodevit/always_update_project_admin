@@ -35,10 +35,24 @@
                         </a>
                     </li><!--end nav-item-->
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="#sidebarTransactions" data-bs-toggle="collapse" role="button"
+                           aria-expanded="false" aria-controls="sidebarTransactions">
                             <i class="iconoir-task-list menu-icon"></i>
-                            <span>Add Courses</span>
+                            <span>Courses</span>
                         </a>
+                        <div class="collapse " id="sidebarTransactions">
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('course.suggestion.create')}}">Course Suggestion</a>
+                                </li><!--end nav-item-->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('course.formula.create')}}">Course Formula</a>
+                                </li><!--end nav-item-->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('course.video.create')}}">Course Video</a>
+                                </li>
+                            </ul><!--end nav-->
+                        </div><!--end startbarTables-->
                     </li><!--end nav-item-->
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('suggestion.create')}}">
