@@ -30,4 +30,11 @@ class CourseAPIController extends Controller
 
         return $this->successResponse($courses, $class_name.' List');
     }
+
+    public function classWiseCourses(string $class_name, string $check)
+    {
+        $courses = Course::where('class_name', $class_name)->where('check',$check)->get();
+
+        return $this->successResponse($courses, $class_name.' List of '.$check.' Courses');
+    }
 }
