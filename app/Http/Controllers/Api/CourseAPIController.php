@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CourseAPIController extends Controller
@@ -36,5 +37,17 @@ class CourseAPIController extends Controller
         $courses = Course::where('class_name', $class_name)->where('check',$check)->get();
 
         return $this->successResponse($courses, $class_name.' List of '.$check.' Courses');
+    }
+
+    public function addDeviceId(Request $request)
+    {
+        $data = $request->validate([
+            'device_id' => 'required',
+            'device_name'=>'required'
+        ]);
+
+        $user = User::create($data);
+
+        return $this->successResponse($user,'Device ID Added Successfully');
     }
 }
