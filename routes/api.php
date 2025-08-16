@@ -8,7 +8,7 @@ Use App\Http\Controllers\Api\CourseAPIController;
 Route::get('/class_list',[CommonController::class,'class_list']);
 Route::get('/class/{id}/{type}',[CommonController::class,'class_detail']);
 Route::get('/{type}',[CommonController::class,'index']);
-Route::get('{type}/{id}',[CommonController::class,'show']);
+Route::get('class/{type}/{id}',[CommonController::class,'show']);
 
 Route::get('/all-course/{check}',[CourseAPIController::class,'allCourses']);
 Route::get('/single-course/{course_id}',[CourseAPIController::class,'singleCourse']);
