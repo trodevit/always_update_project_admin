@@ -25,7 +25,7 @@ class CourseAPIController extends Controller
 
     public function classCourses(string $class_name)
     {
-        dd($class_name);
+//        dd($class_name);
         $courses = Course::where('class_name', $class_name)->get();
 
         return $this->successResponse($courses, $class_name.' List');
