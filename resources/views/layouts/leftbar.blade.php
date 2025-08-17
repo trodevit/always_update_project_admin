@@ -77,7 +77,14 @@
                             <i class="iconoir-calendar menu-icon"></i>
                             <span>Notice</span>
                         </a>
-                    </li><!--end nav-item-->
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('device_id')}}">
+                            <i class="iconoir-calendar menu-icon"></i>
+                            <span>Devices</span>
+                        </a>
+                    </li>
+                    <!--end nav-item-->
                 </ul><!--end navbar-nav--->
 {{--                <div class="update-msg text-center">--}}
 {{--                    <div class="d-flex justify-content-center align-items-center thumb-lg update-icon-box  rounded-circle mx-auto">--}}

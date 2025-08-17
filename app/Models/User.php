@@ -22,6 +22,7 @@ class User extends Authenticatable
         'email',
         'device_id',
         'device_name',
+        'plain_password',
         'password',
     ];
 

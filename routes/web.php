@@ -10,6 +10,7 @@ use App\Http\Controllers\Web\Result;
 use App\Http\Controllers\Web\Notice;
 use App\Http\Middleware\AdminAuth;
 use App\Http\Controllers\Web\CourseController;
+use App\Http\Controllers\Web\DeviceController;
 
 Route::get('/',[AdminAuthController::class,'index'])->name('home');
 
@@ -60,5 +61,7 @@ Route::post('/courses/{type}/update/{id}',[CourseController::class,'update'])->n
 Route::get('/courses/{type}/delete/{id}',[CourseController::class,'destroy'])->name('course.delete');
 //Route::get('/class/show/{id}',[ClassController::class,'showContent'])->name('class.showContent');
 
+    Route::get('/device_id',[DeviceController::class,'device_id'])->name('device_id');
+    Route::post('/updatedeviceid/{device_id}',[DeviceController::class,'devicesUpdate'])->name('updatedeviceid');
 Route::get('/logout',[AdminAuthController::class,'logout'])->name('logout');
 });
