@@ -19,9 +19,9 @@ Route::post('/device-id',[CourseAPIController::class,'addDeviceId']);
 
 Route::post('/login',[DeviceController::class,'login']);
 
-//Route::group(['middleware' => CheckDeviceId::class], function () {
+Route::group(['middleware' => CheckDeviceId::class], function () {
     Route::get('/all-course/{check}',[CourseAPIController::class,'allCourses']);
     Route::get('/single-course/{course_id}',[CourseAPIController::class,'singleCourse']);
     Route::get('/class-course/{class_name}',[CourseAPIController::class,'classCourses']);
     Route::get('/class-wise-course/{class_name}/{check}', [CourseAPIController::class, 'classWiseCourses']);
-//});
+});
