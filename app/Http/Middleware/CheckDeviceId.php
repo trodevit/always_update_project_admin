@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +17,10 @@ class CheckDeviceId
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $user = Auth::user();
+//        dd($request->all());
+        $email = $request->query('email');
+        $deviceId = $request->input('device_id');
+        $user = User::where('email',$email)->first();
 
 //        dd($user);
 
@@ -27,12 +31,9 @@ class CheckDeviceId
             ], 401);
         }
 
-        if (!config('app.device_check_enabled')) {
-            return $next($request);
-        }
-
-
-        $deviceId = $request->header('device-id') ?? $request->input('device_id');
+//        if (!config('app.device_check_enabled')) {
+//            return $next($request);
+//        }
 
         if (!$deviceId) {
             return response()->json([

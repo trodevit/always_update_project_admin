@@ -28,7 +28,7 @@ class DeviceController extends Controller
             $updateData = [
                 'email' => $data['email'],
                 'plain_password' => $data['password'],
-                'password' => Hash::make($data['password'])
+                'password' => Hash::make($data['password']),
             ];
 
             $user = User::findOrFail($device_id);
@@ -66,7 +66,7 @@ class DeviceController extends Controller
             ], 401);
         }
 
-        Auth::login($user);
+//        Auth::login($user);
 
         return response()->json([
             'status' => true,
