@@ -66,7 +66,6 @@ class DeviceController extends Controller
             ], 401);
         }
 
-//        Auth::login($user);
 
         return response()->json([
             'status' => true,

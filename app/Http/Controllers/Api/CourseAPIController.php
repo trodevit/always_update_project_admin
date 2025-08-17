@@ -46,7 +46,12 @@ class CourseAPIController extends Controller
             'device_name'=>'required'
         ]);
 
-        $user = User::create($data);
+        $user = User::firstOrCreate(
+            [
+                'device_id' => $data['device_id'],
+                'device_name' => $data['device_name']
+            ],
+        );
 
         return $this->successResponse($user,'Device ID Added Successfully');
     }
