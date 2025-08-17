@@ -18,6 +18,8 @@ class CheckDeviceId
     {
         $user = Auth::user();
 
+
+
         if (!$user) {
             return response()->json([
                 'status' => false,
