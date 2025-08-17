@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Notifications\DatabaseNotification;
 
 class CourseAPIController extends Controller
 {
@@ -63,6 +64,19 @@ class CourseAPIController extends Controller
         }
 
         return $this->successResponse($user,'Device ID Added Successfully');
+    }
+
+    public function getnotification()
+    {
+        $notifications = DatabaseNotification::all()->map(function($n) {
+            return [
+                'title' => $n->data['title'] ?? null,
+                'body' => $n->data['body'] ?? null,
+                'created_at' => $n->created_at->toDateTimeString(),
+            ];
+        });
+
+        return response()->json($notifications);
     }
 
     public function delete(string $id)

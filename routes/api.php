@@ -13,7 +13,7 @@ Route::get('/{type}',[CommonController::class,'index']);
 Route::get('class/{type}/{id}',[CommonController::class,'show']);
 
 
-
+Route::get('/notifications/center',[CourseAPIController::class,'getnotification']);
 
 Route::post('/device-id',[CourseAPIController::class,'addDeviceId']);
 

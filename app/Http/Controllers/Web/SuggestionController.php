@@ -6,7 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Mail\ErrorOccurred;
 use App\Models\AddClass;
 use App\Models\Common;
+use App\Models\User;
+use App\Notifications\FCMNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
@@ -59,6 +62,8 @@ class SuggestionController extends Controller
             $data['image'] = $this->uploadFile($request->file('image'),$folder.'/images');
 
             Common::create($data);
+
+            $this->notification_center('New Notification from '.$data['check'],$data['title']);
 
             return redirect()->back()->with('success', $data['check'] . 'created successfully');
         }
