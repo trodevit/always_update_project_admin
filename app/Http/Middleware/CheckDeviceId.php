@@ -22,7 +22,7 @@ class CheckDeviceId
         $deviceId = $request->input('device_id');
         $user = User::where('email',$email)->first();
 
-//        dd($user);
+
 
         if (!$user) {
             return response()->json([
@@ -43,6 +43,7 @@ class CheckDeviceId
         }
 
         if ($user->device_id && $user->device_id !== $deviceId) {
+
             return response()->json([
                 'status' => false,
                 'message' => 'Access denied: Device not recognized.'
