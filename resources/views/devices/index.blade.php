@@ -27,6 +27,7 @@
                     <th>Device Name</th>
                     <th>Email</th>
                     <th>Password</th>
+                    <th>Visited Count</th>
                     <th>Created At</th>
                     <th>Update</th>
                     <th>Delete</th>
@@ -46,6 +47,7 @@
                             <td>
                                 <input type="text" name="password" class="form-control" value="{{old('password',$devices->plain_password)}}">
                             </td>
+                            <td>{{$devices->login_count}}</td>
                             <td>{{$devices->created_at}}</td>
                             <td>
                                 <button type="submit" class="btn btn-primary">Submit</button>
