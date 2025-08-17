@@ -123,4 +123,6 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'device_check_enabled' => env('DEVICE_CHECK_ENABLED', false),
+
 ];

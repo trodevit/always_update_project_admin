@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CommonController;
 Use App\Http\Controllers\Api\CourseAPIController;
+use App\Http\Controllers\Web\DeviceController;
 
 Route::get('/class_list',[CommonController::class,'class_list']);
 Route::get('/class/{id}/{type}',[CommonController::class,'class_detail']);
@@ -16,3 +17,5 @@ Route::get('/class-course/{class_name}',[CourseAPIController::class,'classCourse
 Route::get('/class-wise-course/{class_name}/{check}',[CourseAPIController::class,'classWiseCourses']);
 
 Route::post('/device-id',[CourseAPIController::class,'addDeviceId']);
+
+Route::get('/login',[DeviceController::class,'login']);
