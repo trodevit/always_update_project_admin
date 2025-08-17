@@ -18,7 +18,7 @@ class CheckDeviceId
     {
         $user = Auth::user();
 
-
+//        dd($user);
 
         if (!$user) {
             return response()->json([
@@ -27,12 +27,11 @@ class CheckDeviceId
             ], 401);
         }
 
-        // Skip device check if feature flag is off
         if (!config('app.device_check_enabled')) {
             return $next($request);
         }
 
-        // Get device ID from header or body
+
         $deviceId = $request->header('device-id') ?? $request->input('device_id');
 
         if (!$deviceId) {

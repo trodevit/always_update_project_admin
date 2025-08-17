@@ -20,4 +20,4 @@ Route::post('/device-id',[CourseAPIController::class,'addDeviceId']);
 
 Route::post('/login',[DeviceController::class,'login']);
 
-Route::get('/class-wise-course/{class_name}/{check}',[CourseAPIController::class,'classWiseCourses'])->middleware([\App\Http\Middleware\CheckDeviceId::class]);
+Route::get('/class-wise-course/{class_name}/{check}',[CourseAPIController::class,'classWiseCourses']);
