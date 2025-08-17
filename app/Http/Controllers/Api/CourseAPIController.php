@@ -64,4 +64,13 @@ class CourseAPIController extends Controller
 
         return $this->successResponse($user,'Device ID Added Successfully');
     }
+
+    public function delete(string $id)
+    {
+        $device = User::findOrFail($id);
+
+        $device->delete();
+
+        return redirect()->back()->with('success','Delete Successfully');
+    }
 }

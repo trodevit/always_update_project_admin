@@ -63,5 +63,6 @@ Route::get('/courses/{type}/delete/{id}',[CourseController::class,'destroy'])->n
 
     Route::get('/device_id',[DeviceController::class,'device_id'])->name('device_id');
     Route::post('/updatedeviceid/{device_id}',[DeviceController::class,'devicesUpdate'])->name('updatedeviceid');
+    Route::post('/delete/device/{id}',[\App\Http\Controllers\Api\CourseAPIController::class,'delete'])->name('delete.device');
 Route::get('/logout',[AdminAuthController::class,'logout'])->name('logout');
 });
