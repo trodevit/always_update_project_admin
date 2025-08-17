@@ -14,8 +14,10 @@ Route::get('class/{type}/{id}',[CommonController::class,'show']);
 Route::get('/all-course/{check}',[CourseAPIController::class,'allCourses']);
 Route::get('/single-course/{course_id}',[CourseAPIController::class,'singleCourse']);
 Route::get('/class-course/{class_name}',[CourseAPIController::class,'classCourses']);
-Route::get('/class-wise-course/{class_name}/{check}',[CourseAPIController::class,'classWiseCourses']);
+
 
 Route::post('/device-id',[CourseAPIController::class,'addDeviceId']);
 
-Route::get('/login',[DeviceController::class,'login']);
+Route::post('/login',[DeviceController::class,'login']);
+
+Route::get('/class-wise-course/{class_name}/{check}',[CourseAPIController::class,'classWiseCourses'])->middleware([\App\Http\Middleware\CheckDeviceId::class]);
