@@ -31,9 +31,9 @@ class CheckDeviceId
             ], 401);
         }
 
-//        if (!config('app.device_check_enabled')) {
-//            return $next($request);
-//        }
+        if (!config('app.device_check_enabled')) {
+            return $next($request);
+        }
 
         if (!$deviceId) {
             return response()->json([
