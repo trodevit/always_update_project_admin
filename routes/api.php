@@ -23,5 +23,5 @@ Route::group(['middleware' => CheckDeviceId::class], function () {
     Route::get('/all-course/{check}',[CourseAPIController::class,'allCourses']);
     Route::get('/single-course/{course_id}',[CourseAPIController::class,'singleCourse']);
     Route::get('/class-course/{class_name}',[CourseAPIController::class,'classCourses']);
-    Route::get('/class-wise-course/{class_name}/{check}', [CourseAPIController::class, 'classWiseCourses']);
+    Route::get('/class-wise-course/{email}/{device_id}/{class_name}/{check}', [CourseAPIController::class, 'classWiseCourses']);
 });
