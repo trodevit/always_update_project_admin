@@ -44,6 +44,9 @@ class ClassController extends Controller
 
         $class = AddClass::create($data);
 
+        $this->notification_center('📢 New Update!',
+            ucfirst($data['class_name']) . ' has just been added to ' . config('app.name'));
+
         return redirect()->back();
     }
 

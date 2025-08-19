@@ -78,6 +78,9 @@ class CourseController extends Controller
             }
             $course = Course::create($data);
 
+            $this->notification_center('🔥 New Course Alert! Discover ' . ucfirst($data['check']),
+                $data['title']);
+
             return redirect()->back()->with('success',$data['check'].' '.'Added.');
         }
 
