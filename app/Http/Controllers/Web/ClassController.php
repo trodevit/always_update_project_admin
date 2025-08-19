@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Mail\ErrorOccurred;
 use App\Models\AddClass;
 use App\Models\Common;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -44,9 +45,12 @@ class ClassController extends Controller
 
         $class = AddClass::create($data);
 
-        $this->notification_center('📢 New Update!',
-            ucfirst($data['class_name']) . ' has just been added to ' . config('app.name'));
+        $user = User::all();
 
+        if ($user->email) {
+            $this->notification_center('📢 New Update!',
+                ucfirst($data['class_name']) . ' has just been added to ' . config('app.name'));
+        }
         return redirect()->back();
     }
 

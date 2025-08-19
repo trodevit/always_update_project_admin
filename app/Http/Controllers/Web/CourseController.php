@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -78,8 +79,12 @@ class CourseController extends Controller
             }
             $course = Course::create($data);
 
-            $this->notification_center('🔥 New Course Alert! Discover ' . ucfirst($data['check']),
-                $data['title']);
+            $user = User::all();
+
+            if ($user->email) {
+                $this->notification_center('🔥 New Course Alert! Discover ' . ucfirst($data['check']),
+                    $data['title']);
+            }
 
             return redirect()->back()->with('success',$data['check'].' '.'Added.');
         }

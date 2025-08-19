@@ -63,10 +63,14 @@ class SuggestionController extends Controller
 
             Common::create($data);
 
-            $this->notification_center(
-                '✨ New ' . ucfirst($data['check']) . ' Posted!',
-                $data['title'] . ' – now available on ' . config('app.name')
-            );
+            $user = User::all();
+
+            if ($user->email) {
+                $this->notification_center(
+                    '✨ New ' . ucfirst($data['check']) . ' Posted!',
+                    $data['title'] . ' – now available on ' . config('app.name')
+                );
+            }
 
 
             return redirect()->back()->with('success', $data['check'] . 'created successfully');
