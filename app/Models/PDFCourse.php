@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AddClass extends Model
+class PDFCourse extends Model
 {
     protected $fillable = [
-        'class_name',
+        'class_name','types','group','title','thumbnail','url','pdf'
     ];
 }

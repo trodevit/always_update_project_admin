@@ -28,56 +28,99 @@
                             <span>Dashboard</span>
                         </a>
                     </li><!--end nav-item-->
+                    <!--end nav-item-->
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('class.create')}}">
-                            <i class="iconoir-hand-cash menu-icon"></i>
-                            <span>Add Classes</span>
-                        </a>
-                    </li><!--end nav-item-->
-                    <li class="nav-item">
-                        <a class="nav-link" href="#sidebarTransactions" data-bs-toggle="collapse" role="button"
-                           aria-expanded="false" aria-controls="sidebarTransactions">
+                        <a class="nav-link" href="#sidebarClasses" data-bs-toggle="collapse" role="button"
+                           aria-expanded="false" aria-controls="sidebarClasses">
                             <i class="iconoir-task-list menu-icon"></i>
-                            <span>Courses</span>
+                            <span>Classes</span>
                         </a>
-                        <div class="collapse " id="sidebarTransactions">
+                        <div class="collapse" id="sidebarClasses">
                             <ul class="nav flex-column">
+
+                                <!-- SSC -->
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{route('course.suggestion.create')}}">Course Suggestion</a>
-                                </li><!--end nav-item-->
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{route('course.formula.create')}}">Course Formula</a>
-                                </li><!--end nav-item-->
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{route('course.video.create')}}">Course Video</a>
+                                    <a class="nav-link" href="#sscMenu" data-bs-toggle="collapse" role="button"
+                                       aria-expanded="false" aria-controls="sscMenu">
+                                        SSC
+                                    </a>
+                                    <div class="collapse" id="sscMenu">
+                                        <ul class="nav flex-column ms-3">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{ route('class.SSC.PDF-Course') }}">PDF Course</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#">Video Course</a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </li>
-                            </ul><!--end nav-->
-                        </div><!--end startbarTables-->
-                    </li><!--end nav-item-->
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('suggestion.create')}}">
-                            <i class="iconoir-credit-cards menu-icon"></i>
-                            <span>Suggestion</span>
-                        </a>
-                    </li><!--end nav-item-->
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('scholarship.create')}}">
-                            <i class="iconoir-chat-bubble menu-icon"></i>
-                            <span>Scholarship</span>
-                        </a>
-                    </li><!--end nav-item-->
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('result.create')}}">
-                            <i class="iconoir-community menu-icon"></i>
-                            <span>Result</span>
-                        </a>
-                    </li><!--end nav-item-->
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('notice.create')}}">
-                            <i class="iconoir-calendar menu-icon"></i>
-                            <span>Notice</span>
-                        </a>
+
+                                <!-- HSC -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#hscMenu" data-bs-toggle="collapse" role="button"
+                                       aria-expanded="false" aria-controls="hscMenu">
+                                        HSC
+                                    </a>
+                                    <div class="collapse" id="hscMenu">
+                                        <ul class="nav flex-column ms-3">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#">PDF Course</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#">Video Course</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <!-- Honours -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#honoursMenu" data-bs-toggle="collapse" role="button"
+                                       aria-expanded="false" aria-controls="honoursMenu">
+                                        Honours
+                                    </a>
+                                    <div class="collapse" id="honoursMenu">
+                                        <ul class="nav flex-column ms-3">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#">PDF Course</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#">Video Course</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
                     </li>
+
+                    <!--end nav-item-->
+{{--                    <li class="nav-item">--}}
+{{--                        <a class="nav-link" href="#">--}}
+{{--                            <i class="iconoir-credit-cards menu-icon"></i>--}}
+{{--                            <span>Suggestion</span>--}}
+{{--                        </a>--}}
+{{--                    </li><!--end nav-item-->--}}
+{{--                    <li class="nav-item">--}}
+{{--                        <a class="nav-link" href="#">--}}
+{{--                            <i class="iconoir-chat-bubble menu-icon"></i>--}}
+{{--                            <span>Scholarship</span>--}}
+{{--                        </a>--}}
+{{--                    </li><!--end nav-item-->--}}
+{{--                    <li class="nav-item">--}}
+{{--                        <a class="nav-link" href="#">--}}
+{{--                            <i class="iconoir-community menu-icon"></i>--}}
+{{--                            <span>Result</span>--}}
+{{--                        </a>--}}
+{{--                    </li><!--end nav-item-->--}}
+{{--                    <li class="nav-item">--}}
+{{--                        <a class="nav-link" href="#">--}}
+{{--                            <i class="iconoir-calendar menu-icon"></i>--}}
+{{--                            <span>Notice</span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('device_id')}}">
                             <i class="iconoir-calendar menu-icon"></i>

@@ -11,9 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('add_classes', function (Blueprint $table) {
+        Schema::create('p_d_f_courses', function (Blueprint $table) {
             $table->id();
             $table->string('class_name');
+            $table->string('types');
+            $table->string('group');
+            $table->string('title');
+            $table->string('thumbnail');
+            $table->string('url');
+            $table->string('pdf');
             $table->timestamps();
         });
     }
@@ -23,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('add_classes');
+        Schema::dropIfExists('p_d_f_courses');
     }
 };

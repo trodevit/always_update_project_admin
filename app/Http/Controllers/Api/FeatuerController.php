@@ -8,42 +8,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\DatabaseNotification;
 
-class CourseAPIController extends Controller
+class FeatuerController extends Controller
 {
-    public function allCourses(string $check)
-    {
-//        dd($check);
-        $courses = Course::where('check', $check)->get();
-
-        return $this->successResponse($courses,$check.' List');
-    }
-
-    public function singleCourse(string $course_id){
-//        dd($course_id);
-        $courses = Course::findOrFail($course_id);
-
-        return $this->successResponse($courses,'All List');
-    }
-
-    public function classCourses(string $class_name)
-    {
-//        dd($class_name);
-        $courses = Course::where('class_name', $class_name)->get();
-
-        return $this->successResponse($courses, $class_name.' List');
-    }
-
-    public function classWiseCourses(string $email, string $device_id, string $class_name, string $check)
-    {
-        $user = User::where('email',$email)->where('device_id', $device_id)->first();
-
-        if ($user) {
-            $courses = Course::where('class_name', $class_name)->where('check', $check)->get();
-
-            return $this->successResponse($courses, $class_name . ' List of ' . $check . ' Courses');
-        }
-    }
-
     public function addDeviceId(Request $request)
     {
         $data = $request->validate([
@@ -83,12 +49,5 @@ class CourseAPIController extends Controller
         return response()->json($notifications);
     }
 
-    public function delete(string $id)
-    {
-        $device = User::findOrFail($id);
 
-        $device->delete();
-
-        return redirect()->back()->with('success','Delete Successfully');
-    }
 }

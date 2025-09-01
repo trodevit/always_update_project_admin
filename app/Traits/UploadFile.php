@@ -20,7 +20,7 @@ trait UploadFile{
             File::makeDirectory($fullFolderPath, 0755, true);
         }
 
-        $fileName = time(). '_' . $file->getClientOriginalExtension();
+        $fileName = now('Asia/Dhaka')->format('His'). '_' . $file->getClientOriginalExtension();
         $file->move($fullFolderPath, $fileName);
 
         return $folder . $fileName;
