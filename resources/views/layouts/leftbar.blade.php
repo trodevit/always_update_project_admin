@@ -50,7 +50,7 @@
                                                 <a class="nav-link" href="{{ route('class.SSC.PDF-Course') }}">PDF Course</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#">Video Course</a>
+                                                <a class="nav-link" href="{{route('class.SSC.Shortcut')}}">Shortcut Technique</a>
                                             </li>
                                         </ul>
                                     </div>

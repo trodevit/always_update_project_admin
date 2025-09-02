@@ -7,17 +7,20 @@ use App\Models\PDFCourse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
-class AllClassController extends Controller
+class ShortcutController extends Controller
 {
-    public function index(){
-        $pdf = PDFCourse::where('class_name','SSC')->where('types','pdf')->get();
-        return view('class.pdf.index',['pdf' => $pdf]);
+    public function index()
+    {
+        $pdf = PDFCourse::where('class_name','SSC')->where('types','technique')->get();
+        return view('class.shortcut.index',['pdf' => $pdf]);
     }
+
     public function create(){
-        return view('class.pdf.create');
+        return view('class.shortcut.create');
     }
 
     public function store(Request $request){
+//        dd($request->all());
         try {
             $data = $request->validate([
                 'class_name' => 'required',
@@ -34,7 +37,7 @@ class AllClassController extends Controller
 
             $upload = PDFCourse::create($data);
 
-            return redirect()->back();
+            return response()->json([$upload]);
         }
         catch (\Exception $exception){
             return response()->json($exception->getMessage());
@@ -44,7 +47,7 @@ class AllClassController extends Controller
     public function edit($id){
         $pdf = PDFCourse::find($id);
 
-        return view('class.pdf.edit',['pdf' => $pdf]);
+        return view('class.shortcut.edit',['pdf' => $pdf]);
     }
 
     public function update(Request $request, $id){
