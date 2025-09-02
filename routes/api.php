@@ -7,6 +7,7 @@ Use App\Http\Controllers\Api\FeatuerController;
 use App\Http\Controllers\Web\DeviceController;
 use App\Http\Middleware\CheckDeviceId;
 use App\Http\Controllers\Api\PDFController;
+use App\Http\Controllers\Api\ShortcutController;
 
 
 
@@ -18,8 +19,9 @@ Route::post('/device-id',[FeatuerController::class,'addDeviceId']);
 Route::post('/login',[DeviceController::class,'login']);
 
 //Route::group(['middleware' => CheckDeviceId::class], function () {
-    Route::get('/class/SSC',[PDFController::class,'className']);
-    Route::get('/class/SSC/PDF',[PDFController::class,'classPDF']);
     Route::get('/class/SSC/PDF/{group}',[PDFController::class,'classGroup']);
-    Route::get('/class/{id}',[PDFController::class,'classID']);
+    Route::get('/class/SSC/Shortcut/{group}',[ShortcutController::class,'index']);
+    Route::get('/class/SSC/{id}',[PDFController::class,'classID']);
+
+
 //});
