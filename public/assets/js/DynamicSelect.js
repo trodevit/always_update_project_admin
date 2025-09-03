@@ -1,7 +1,7 @@
 /*
  * Created by David Adams
  * https://codeshack.io/dynamic-select-images-html-javascript/
- * 
+ *
  * Released under the MIT license
  */
 class DynamicSelect {
@@ -54,7 +54,7 @@ class DynamicSelect {
             } else {
                 optionContent = `
                     ${this.data[i].img ? `<img src="${this.data[i].img}" alt="${this.data[i].text}" class="${this.data[i].imgWidth && this.data[i].imgHeight ? 'dynamic-size' : ''}" style="${this.data[i].imgWidth ? 'width:' + this.data[i].imgWidth + ';' : ''}${this.data[i].imgHeight ? 'height:' + this.data[i].imgHeight + ';' : ''}">` : ''}
-                    ${this.data[i].text ? '<span class="dynamic-select-option-text">' + this.data[i].text + '</span>' : ''}
+                    ${this.data[i].text ? '<span SSC="dynamic-select-option-text">' + this.data[i].text + '</span>' : ''}
                 `;
             }
             optionsHTML += `
@@ -90,7 +90,7 @@ class DynamicSelect {
         });
         this.element.querySelector('.dynamic-select-header').onclick = () => {
             this.element.querySelector('.dynamic-select-header').classList.toggle('dynamic-select-header-active');
-        };  
+        };
         if (this.selectElement.id && document.querySelector('label[for="' + this.selectElement.id + '"]')) {
             document.querySelector('label[for="' + this.selectElement.id + '"]').onclick = () => {
                 this.element.querySelector('.dynamic-select-header').classList.toggle('dynamic-select-header-active');

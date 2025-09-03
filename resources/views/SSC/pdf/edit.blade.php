@@ -4,7 +4,7 @@
     <div class="container mt-5">
         <h2 class="mb-4">Edit Course</h2>
 
-        <form action="{{route('class.SSC.update',$pdf->id)}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('course.SSC.update',$pdf->id)}}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PATCH') <!-- For update -->
 
@@ -54,7 +54,7 @@
 
             <!-- Submit Button -->
             <button type="submit" class="btn btn-primary">Update</button>
-            <a href="{{ route('class.SSC') }}" class="btn btn-info">All List</a>
+            <a href="{{ route('course.SSC') }}" class="btn btn-info">All List</a>
         </form>
     </div>
 @endsection

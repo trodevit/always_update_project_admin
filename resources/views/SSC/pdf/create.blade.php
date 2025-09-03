@@ -4,7 +4,7 @@
     <div class="container mt-5">
         <h2 class="mb-4">Add Course</h2>
 
-        <form action="{{route('class.SSC.Course')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('course.SSC.Course')}}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <input type="hidden" name="types" value="pdf">
@@ -46,7 +46,7 @@
 
             <!-- Submit Button -->
             <button type="submit" class="btn btn-primary">Submit</button>
-            <a href="{{route('class.SSC')}}" class="btn btn-info">All List</a>
+            <a href="{{route('course.SSC')}}" class="btn btn-info">All List</a>
         </form>
     </div>
 @endsection

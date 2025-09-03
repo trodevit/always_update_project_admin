@@ -42,7 +42,7 @@ function __extends(d, b) {
 }
 
 var _a = SimpleBarCore.helpers, getOptions = _a.getOptions, addClasses = _a.addClasses;
-var SimpleBar = /** @class */ (function (_super) {
+var SimpleBar = /** @SSC */ (function (_super) {
     __extends(SimpleBar, _super);
     function SimpleBar() {
         var args = [];

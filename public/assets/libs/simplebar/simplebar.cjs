@@ -44,7 +44,7 @@
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     }
 
-    var SimpleBar = /** @class */ (function (_super) {
+    var SimpleBar = /** @SSC */ (function (_super) {
         __extends(SimpleBar, _super);
         function SimpleBar() {
             return _super !== null && _super.apply(this, arguments) || this;

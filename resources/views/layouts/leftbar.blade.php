@@ -33,7 +33,7 @@
                         <a class="nav-link" href="#sidebarClasses" data-bs-toggle="collapse" role="button"
                            aria-expanded="false" aria-controls="sidebarClasses">
                             <i class="iconoir-task-list menu-icon"></i>
-                            <span>Classes</span>
+                            <span>Course</span>
                         </a>
                         <div class="collapse" id="sidebarClasses">
                             <ul class="nav flex-column">
@@ -47,10 +47,10 @@
                                     <div class="collapse" id="sscMenu">
                                         <ul class="nav flex-column ms-3">
                                             <li class="nav-item">
-                                                <a class="nav-link" href="{{ route('class.SSC.PDF-Course') }}">PDF Course</a>
+                                                <a class="nav-link" href="{{ route('course.SSC.PDF-Course') }}">PDF Course</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="{{route('class.SSC.Shortcut')}}">Shortcut Technique</a>
+                                                <a class="nav-link" href="{{route('course.SSC.Shortcut')}}">Shortcut Technique</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -95,29 +95,136 @@
                             </ul>
                         </div>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#sidebarClasses2" data-bs-toggle="collapse" role="button"
+                           aria-expanded="false" aria-controls="sidebarClasses2">
+                            <i class="iconoir-task-list menu-icon"></i>
+                            <span>Class</span>
+                        </a>
+                        <div class="collapse" id="sidebarClasses2">
+                            <ul class="nav flex-column">
+
+                                <!-- SSC -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#sscMenu2" data-bs-toggle="collapse" role="button"
+                                       aria-expanded="false" aria-controls="sscMenu2">
+                                        SSC
+                                    </a>
+                                    <div class="collapse" id="sscMenu2">
+                                        <ul class="nav flex-column ms-3">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{ route('suggestion.create') }}">Suggestion</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{route('course.SSC.Shortcut')}}">Scholarship</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{route('course.SSC.Shortcut')}}">Result</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{route('course.SSC.Shortcut')}}">Notice</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <!-- HSC -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#hscMenu2" data-bs-toggle="collapse" role="button"
+                                       aria-expanded="false" aria-controls="hscMenu2">
+                                        HSC
+                                    </a>
+                                    <div class="collapse" id="hscMenu2">
+                                        <ul class="nav flex-column ms-3">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{ route('course.SSC.PDF-Course') }}">Suggestion</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{route('course.SSC.Shortcut')}}">Scholarship</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{route('course.SSC.Shortcut')}}">Result</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{route('course.SSC.Shortcut')}}">Notice</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <!-- Honours -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#honoursMenu2" data-bs-toggle="collapse" role="button"
+                                       aria-expanded="false" aria-controls="honoursMenu2">
+                                        Honours
+                                    </a>
+                                    <div class="collapse" id="honoursMenu2">
+                                        <ul class="nav flex-column ms-3">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{ route('course.SSC.PDF-Course') }}">Suggestion</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{route('course.SSC.Shortcut')}}">Scholarship</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{route('course.SSC.Shortcut')}}">Result</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{route('course.SSC.Shortcut')}}">Notice</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#collegeMenu2" data-bs-toggle="collapse" role="button"
+                                       aria-expanded="false" aria-controls="collegeMenu2">
+                                        College Admission
+                                    </a>
+                                    <div class="collapse" id="collegeMenu2">
+                                        <ul class="nav flex-column ms-3">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{ route('course.SSC.PDF-Course') }}">Suggestion</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{route('course.SSC.Shortcut')}}">Scholarship</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{route('course.SSC.Shortcut')}}">Result</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{route('course.SSC.Shortcut')}}">Notice</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </li>
 
                     <!--end nav-item-->
-{{--                    <li class="nav-item">--}}
-{{--                        <a class="nav-link" href="#">--}}
-{{--                            <i class="iconoir-credit-cards menu-icon"></i>--}}
+{{--                    <li SSC="nav-item">--}}
+{{--                        <a SSC="nav-link" href="#">--}}
+{{--                            <i SSC="iconoir-credit-cards menu-icon"></i>--}}
 {{--                            <span>Suggestion</span>--}}
 {{--                        </a>--}}
 {{--                    </li><!--end nav-item-->--}}
-{{--                    <li class="nav-item">--}}
-{{--                        <a class="nav-link" href="#">--}}
-{{--                            <i class="iconoir-chat-bubble menu-icon"></i>--}}
+{{--                    <li SSC="nav-item">--}}
+{{--                        <a SSC="nav-link" href="#">--}}
+{{--                            <i SSC="iconoir-chat-bubble menu-icon"></i>--}}
 {{--                            <span>Scholarship</span>--}}
 {{--                        </a>--}}
 {{--                    </li><!--end nav-item-->--}}
-{{--                    <li class="nav-item">--}}
-{{--                        <a class="nav-link" href="#">--}}
-{{--                            <i class="iconoir-community menu-icon"></i>--}}
+{{--                    <li SSC="nav-item">--}}
+{{--                        <a SSC="nav-link" href="#">--}}
+{{--                            <i SSC="iconoir-community menu-icon"></i>--}}
 {{--                            <span>Result</span>--}}
 {{--                        </a>--}}
 {{--                    </li><!--end nav-item-->--}}
-{{--                    <li class="nav-item">--}}
-{{--                        <a class="nav-link" href="#">--}}
-{{--                            <i class="iconoir-calendar menu-icon"></i>--}}
+{{--                    <li SSC="nav-item">--}}
+{{--                        <a SSC="nav-link" href="#">--}}
+{{--                            <i SSC="iconoir-calendar menu-icon"></i>--}}
 {{--                            <span>Notice</span>--}}
 {{--                        </a>--}}
 {{--                    </li>--}}
@@ -129,13 +236,13 @@
                     </li>
                     <!--end nav-item-->
                 </ul><!--end navbar-nav--->
-{{--                <div class="update-msg text-center">--}}
-{{--                    <div class="d-flex justify-content-center align-items-center thumb-lg update-icon-box  rounded-circle mx-auto">--}}
-{{--                        <i class="iconoir-peace-hand h3 align-self-center mb-0 text-primary"></i>--}}
+{{--                <div SSC="update-msg text-center">--}}
+{{--                    <div SSC="d-flex justify-content-center align-items-center thumb-lg update-icon-box  rounded-circle mx-auto">--}}
+{{--                        <i SSC="iconoir-peace-hand h3 align-self-center mb-0 text-primary"></i>--}}
 {{--                    </div>--}}
-{{--                    <h5 class="mt-3">Mannat Themes</h5>--}}
-{{--                    <p class="mb-3 text-muted">Approx is a high quality web applications.</p>--}}
-{{--                    <a href="javascript: void(0);" class="btn text-primary shadow-sm rounded-pill">Upgrade your plan</a>--}}
+{{--                    <h5 SSC="mt-3">Mannat Themes</h5>--}}
+{{--                    <p SSC="mb-3 text-muted">Approx is a high quality web applications.</p>--}}
+{{--                    <a href="javascript: void(0);" SSC="btn text-primary shadow-sm rounded-pill">Upgrade your plan</a>--}}
 {{--                </div>--}}
             </div>
         </div><!--end startbar-collapse-->

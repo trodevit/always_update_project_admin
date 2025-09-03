@@ -2,16 +2,14 @@
 
 @section('content')
     <div class="container mt-5">
-        <h2 class="mb-4">Courses Table</h2>
+        <h2 class="mb-4">Suggestion Table</h2>
 
         <table class="table table-bordered table-striped">
             <thead class="table-dark">
             <tr>
-                <th>Types</th>
-                <th>Groups</th>
                 <th>Title</th>
                 <th>Thumbnail</th>
-                <th>Video Link</th>
+                <th>Description</th>
                 <th>PDF</th>
                 <th>Action</th>
             </tr>
@@ -22,17 +20,19 @@
 
             <!-- Add more rows dynamically from database -->
 
-            @foreach($pdf as $course)
+            @foreach($suggestions as $course)
             <tr>
-                <td>{{ $course->types }}</td>
-                <td>{{ $course->group }}</td>
                 <td>{{ $course->title }}</td>
-                <td><img src="{{ asset($course->thumbnail) }}" width="80" alt="{{ $course->title }}"></td>
-                <td><a href="{{ $course->url }}" target="_blank">Watch Video</a></td>
+                <td>
+                    <a href="{{asset($course->image)}}" target="_blank">
+                        <img src="{{ asset($course->image) }}" width="80" alt="{{ $course->title }}">
+                    </a>
+                </td>
+                <td>{{ $course->description }}</td>
                 <td><a href="{{ asset($course->pdf) }}" target="_blank">Download PDF</a></td>
                 <td>
-                    <a href="{{ route('class.SSC.shortcut.edit', $course->id) }}" class="btn btn-sm btn-primary">Edit</a>
-                    <form action="{{ route('class.SSC.shortcut.delete', $course->id) }}" method="POST" style="display:inline;">
+                    <a href="{{ route('suggestion.edit', $course->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                    <form action="{{ route('suggestion.delete', $course->id) }}" method="POST" style="display:inline;">
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-sm btn-danger">Delete</button>

@@ -12,11 +12,11 @@ class ShortcutController extends Controller
     public function index()
     {
         $pdf = PDFCourse::where('class_name','SSC')->where('types','technique')->get();
-        return view('class.shortcut.index',['pdf' => $pdf]);
+        return view('SSC.shortcut.index',['pdf' => $pdf]);
     }
 
     public function create(){
-        return view('class.shortcut.create');
+        return view('SSC.shortcut.create');
     }
 
     public function store(Request $request){
@@ -37,7 +37,7 @@ class ShortcutController extends Controller
 
             $upload = PDFCourse::create($data);
 
-            return response()->json([$upload]);
+            return redirect()->back();
         }
         catch (\Exception $exception){
             return response()->json($exception->getMessage());
@@ -47,7 +47,7 @@ class ShortcutController extends Controller
     public function edit($id){
         $pdf = PDFCourse::find($id);
 
-        return view('class.shortcut.edit',['pdf' => $pdf]);
+        return view('SSC.shortcut.edit',['pdf' => $pdf]);
     }
 
     public function update(Request $request, $id){
@@ -73,7 +73,7 @@ class ShortcutController extends Controller
 
             $upload->update($data);
 
-            return redirect()->route('class.SSC');
+            return redirect()->route('SSC.SSC.Shortcut.index');
         }
         catch (\Exception $exception){
             return response()->json($exception->getMessage());

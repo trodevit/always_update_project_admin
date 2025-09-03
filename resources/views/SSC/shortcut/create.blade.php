@@ -4,7 +4,7 @@
     <div class="container mt-5">
         <h2 class="mb-4">Add Course</h2>
 
-        <form action="{{route('class.SSC.shortcut.store')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('course.SSC.shortcut.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <input type="hidden" name="types" value="technique">
@@ -45,7 +45,7 @@
 
             <!-- Submit Button -->
             <button type="submit" class="btn btn-primary">Submit</button>
-            <a href="{{route('class.SSC.Shortcut.index')}}" class="btn btn-info">All List</a>
+            <a href="{{route('course.SSC.Shortcut.index')}}" class="btn btn-info">All List</a>
         </form>
     </div>
 @endsection

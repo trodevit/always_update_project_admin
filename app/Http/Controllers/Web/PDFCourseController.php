@@ -7,14 +7,14 @@ use App\Models\PDFCourse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
-class AllClassController extends Controller
+class PDFCourseController extends Controller
 {
     public function index(){
         $pdf = PDFCourse::where('class_name','SSC')->where('types','pdf')->get();
-        return view('class.pdf.index',['pdf' => $pdf]);
+        return view('SSC.pdf.index',['pdf' => $pdf]);
     }
     public function create(){
-        return view('class.pdf.create');
+        return view('SSC.pdf.create');
     }
 
     public function store(Request $request){
@@ -44,7 +44,7 @@ class AllClassController extends Controller
     public function edit($id){
         $pdf = PDFCourse::find($id);
 
-        return view('class.pdf.edit',['pdf' => $pdf]);
+        return view('SSC.pdf.edit',['pdf' => $pdf]);
     }
 
     public function update(Request $request, $id){
@@ -70,7 +70,7 @@ class AllClassController extends Controller
 
             $upload->update($data);
 
-            return redirect()->route('class.SSC');
+            return redirect()->route('SSC.SSC');
         }
         catch (\Exception $exception){
             return response()->json($exception->getMessage());
