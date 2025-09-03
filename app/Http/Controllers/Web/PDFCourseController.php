@@ -70,7 +70,7 @@ class PDFCourseController extends Controller
 
             $upload->update($data);
 
-            return redirect()->route('SSC.SSC');
+            return redirect()->route('course.SSC');
         }
         catch (\Exception $exception){
             return response()->json($exception->getMessage());
