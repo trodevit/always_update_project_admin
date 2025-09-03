@@ -73,7 +73,7 @@ class ShortcutController extends Controller
 
             $upload->update($data);
 
-            return redirect()->route('SSC.SSC.Shortcut.index');
+            return redirect()->route('course.SSC.Shortcut.index');
         }
         catch (\Exception $exception){
             return response()->json($exception->getMessage());
