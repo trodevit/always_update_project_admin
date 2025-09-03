@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Suggestion;
+use App\Models\User;
+use App\Notifications\FCMNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -44,6 +46,13 @@ class SuggestionController extends Controller
             $data['pdf'] = $this->uploadFile($request->file('pdf'),'suggestion/pdfs/');
 
             $upload = Suggestion::create($data);
+
+            $user = User::all();
+
+            foreach ($user as $users) {
+                $users->notify(new FCMNotification($data['title'], $data['description']));
+            }
+
 
             return redirect()->back();
         }catch (\Exception $e){

@@ -25,7 +25,6 @@ class FeatuerController extends Controller
             $user->login_count = $user->login_count + 1;
             $user->save();
         } else {
-            // Create new device with login_count = 1
             $user = User::create([
                 'device_id' => $data['device_id'],
                 'device_name' => $data['device_name'],
