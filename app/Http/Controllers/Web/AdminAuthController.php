@@ -27,6 +27,7 @@ class AdminAuthController extends Controller
         ]);
 
         $envEmail = env('ADMIN_EMAIL');
+        dd($envEmail,$request->email);
         $envPasswordHash = env('ADMIN_PASSWORD');
 
         if ($request->email !== $envEmail) {
