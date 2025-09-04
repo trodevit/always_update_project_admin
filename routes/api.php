@@ -8,6 +8,7 @@ use App\Http\Controllers\Web\DeviceController;
 use App\Http\Middleware\CheckDeviceId;
 use App\Http\Controllers\Api\PDFController;
 use App\Http\Controllers\Api\ShortcutController;
+use App\Http\Controllers\Api\ClassController;
 
 
 
@@ -23,5 +24,6 @@ Route::post('/login',[DeviceController::class,'login']);
     Route::get('/SSC/SSC/Shortcut/{group}',[ShortcutController::class,'index']);
     Route::get('/SSC/SSC/{id}',[PDFController::class,'classID']);
 
-
+    Route::get('/class/{class_name}/{types}',[ClassController::class,'index']);
+    Route::get('/class/{id}',[ClassController::class,'show']);
 //});

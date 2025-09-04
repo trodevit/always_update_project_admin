@@ -2,14 +2,23 @@
 
 @section('content')
     <div class="container mt-5">
-        <h2 class="mb-4">Edit Suggestion</h2>
+        <h2 class="mb-4">Edit Scholarship</h2>
 
-        <form action="{{route('suggestion.update',$upload->id)}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('scholarship.update',$upload->id)}}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PATCH') <!-- For update -->
 
             <input type="hidden" name="types" value="{{ $upload->types }}">
-            <input type="hidden" name="class_name" value="{{ $upload->class_name }}">
+            <div class="mb-3">
+                <label for="class" class="form-label">Select Class</label>
+                <select class="form-select" id="class" name="class_name" required>
+                    <option value="" selected disabled>-- Select Class --</option>
+                    <option value="ssc" {{ $upload->class_name == 'ssc' ? 'selected' : '' }}>SSC</option>
+                    <option value="hsc" {{ $upload->class_name == 'hsc' ? 'selected' : '' }}>HSC</option>
+                    <option value="college_admission" {{ $upload->class_name == 'college_admission' ? 'selected' : '' }}>College Admission</option>
+                    <option value="honors" {{ $upload->class_name == 'honors' ? 'selected' : '' }}>Honors</option>
+                </select>
+            </div>
 
             <!-- Title -->
             <div class="mb-3">

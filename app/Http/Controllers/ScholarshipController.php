@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\Suggestion;
 use App\Models\User;
 use App\Notifications\FCMNotification;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
-class SuggestionController extends Controller
+class ScholarshipController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $suggestions = Suggestion::where('types','suggestion')->get();
-        return view('suggestion.index',['suggestions'=>$suggestions]);
+        $suggestions = Suggestion::where('types','scholarship')->get();
+        return view('scholarship.index',['suggestions'=>$suggestions]);
     }
 
     /**
@@ -24,7 +24,7 @@ class SuggestionController extends Controller
      */
     public function create()
     {
-        return view('suggestion.create');
+        return view('scholarship.create');
     }
 
     /**
@@ -42,8 +42,10 @@ class SuggestionController extends Controller
                 'pdf'=>'required|mimes:pdf',
             ]);
 
-            $data['image'] = $this->uploadFile($request->file('image'),'suggestion/images/');
-            $data['pdf'] = $this->uploadFile($request->file('pdf'),'suggestion/pdfs/');
+            // dd($data);
+
+            $data['image'] = $this->uploadFile($request->file('image'),'scholarship/images/');
+            $data['pdf'] = $this->uploadFile($request->file('pdf'),'scholarship/pdfs/');
 
             $upload = Suggestion::create($data);
 
@@ -75,7 +77,7 @@ class SuggestionController extends Controller
     {
         $upload = Suggestion::find($id);
 
-        return view('suggestion.edit',['upload'=>$upload]);
+        return view('scholarship.edit',['upload'=>$upload]);
     }
 
     /**
@@ -104,7 +106,7 @@ class SuggestionController extends Controller
 
             $upload->update($data);
 
-            return redirect()->route('suggestion.index');
+            return redirect()->route('scholarship.index');
         }catch (\Exception $e){
             return response()->json(['error' => 'Something went wrong: '.$e->getMessage()], 500);
         }

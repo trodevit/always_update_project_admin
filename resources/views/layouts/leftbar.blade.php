@@ -95,139 +95,32 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#sidebarClasses2" data-bs-toggle="collapse" role="button"
-                           aria-expanded="false" aria-controls="sidebarClasses2">
-                            <i class="iconoir-task-list menu-icon"></i>
-                            <span>Class</span>
-                        </a>
-                        <div class="collapse" id="sidebarClasses2">
-                            <ul class="nav flex-column">
-
-                                <!-- SSC -->
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#sscMenu2" data-bs-toggle="collapse" role="button"
-                                       aria-expanded="false" aria-controls="sscMenu2">
-                                        SSC
-                                    </a>
-                                    <div class="collapse" id="sscMenu2">
-                                        <ul class="nav flex-column ms-3">
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="{{ route('suggestion.create') }}">Suggestion</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="{{route('course.SSC.Shortcut')}}">Scholarship</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="{{route('course.SSC.Shortcut')}}">Result</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="{{route('course.SSC.Shortcut')}}">Notice</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-
-                                <!-- HSC -->
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#hscMenu2" data-bs-toggle="collapse" role="button"
-                                       aria-expanded="false" aria-controls="hscMenu2">
-                                        HSC
-                                    </a>
-                                    <div class="collapse" id="hscMenu2">
-                                        <ul class="nav flex-column ms-3">
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="{{ route('course.SSC.PDF-Course') }}">Suggestion</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="{{route('course.SSC.Shortcut')}}">Scholarship</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="{{route('course.SSC.Shortcut')}}">Result</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="{{route('course.SSC.Shortcut')}}">Notice</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-
-                                <!-- Honours -->
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#honoursMenu2" data-bs-toggle="collapse" role="button"
-                                       aria-expanded="false" aria-controls="honoursMenu2">
-                                        Honours
-                                    </a>
-                                    <div class="collapse" id="honoursMenu2">
-                                        <ul class="nav flex-column ms-3">
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="{{ route('course.SSC.PDF-Course') }}">Suggestion</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="{{route('course.SSC.Shortcut')}}">Scholarship</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="{{route('course.SSC.Shortcut')}}">Result</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="{{route('course.SSC.Shortcut')}}">Notice</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#collegeMenu2" data-bs-toggle="collapse" role="button"
-                                       aria-expanded="false" aria-controls="collegeMenu2">
-                                        College Admission
-                                    </a>
-                                    <div class="collapse" id="collegeMenu2">
-                                        <ul class="nav flex-column ms-3">
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="{{ route('course.SSC.PDF-Course') }}">Suggestion</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="{{route('course.SSC.Shortcut')}}">Scholarship</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="{{route('course.SSC.Shortcut')}}">Result</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="{{route('course.SSC.Shortcut')}}">Notice</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-
-                            </ul>
-                        </div>
-                    </li>
 
                     <!--end nav-item-->
-{{--                    <li SSC="nav-item">--}}
-{{--                        <a SSC="nav-link" href="#">--}}
-{{--                            <i SSC="iconoir-credit-cards menu-icon"></i>--}}
-{{--                            <span>Suggestion</span>--}}
-{{--                        </a>--}}
-{{--                    </li><!--end nav-item-->--}}
-{{--                    <li SSC="nav-item">--}}
-{{--                        <a SSC="nav-link" href="#">--}}
-{{--                            <i SSC="iconoir-chat-bubble menu-icon"></i>--}}
-{{--                            <span>Scholarship</span>--}}
-{{--                        </a>--}}
-{{--                    </li><!--end nav-item-->--}}
-{{--                    <li SSC="nav-item">--}}
-{{--                        <a SSC="nav-link" href="#">--}}
-{{--                            <i SSC="iconoir-community menu-icon"></i>--}}
-{{--                            <span>Result</span>--}}
-{{--                        </a>--}}
-{{--                    </li><!--end nav-item-->--}}
-{{--                    <li SSC="nav-item">--}}
-{{--                        <a SSC="nav-link" href="#">--}}
-{{--                            <i SSC="iconoir-calendar menu-icon"></i>--}}
-{{--                            <span>Notice</span>--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('suggestion.create') }}">
+                            <i class="iconoir-credit-cards menu-icon"></i>
+                            <span>Suggestion</span>
+                        </a>
+                    </li><!--end nav-item-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('scholarship.create')}}">
+                            <i class="iconoir-chat-bubble menu-icon"></i>
+                            <span>Scholarship</span>
+                        </a>
+                    </li><!--end nav-item-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('result.create') }}">
+                            <i class="iconoir-community menu-icon"></i>
+                            <span>Result</span>
+                        </a>
+                    </li><!--end nav-item-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('notice.create') }}">
+                            <i class="iconoir-calendar menu-icon"></i>
+                            <span>Notice</span>
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('device_id')}}">
                             <i class="iconoir-calendar menu-icon"></i>
