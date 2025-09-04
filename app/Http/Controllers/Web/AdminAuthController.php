@@ -26,9 +26,9 @@ class AdminAuthController extends Controller
             'password' => 'required',
         ]);
 
-        $envEmail = env('ADMIN_EMAIL');
+        $envEmail = config('admin.email');
         dd($envEmail,$request->email);
-        $envPasswordHash = env('ADMIN_PASSWORD');
+        $envPasswordHash = config('admin.password');
 
         if ($request->email !== $envEmail) {
             return redirect()->back()->withErrors(['Please enter valid email'])->withInput();
