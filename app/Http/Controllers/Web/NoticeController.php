@@ -1,22 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web;
 
+use App\Http\Controllers\Controller;
 use App\Models\Suggestion;
 use App\Models\User;
 use App\Notifications\FCMNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
-class ResultController extends Controller
+class NoticeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $suggestions = Suggestion::where('types','result')->get();
-        return view('result.index',['suggestions'=>$suggestions]);
+        $suggestions = Suggestion::where('types','notice')->get();
+        return view('notice.index',['suggestions'=>$suggestions]);
     }
 
     /**
@@ -24,7 +25,7 @@ class ResultController extends Controller
      */
     public function create()
     {
-        return view('result.create');
+        return view('notice.create');
     }
 
     /**
@@ -40,6 +41,7 @@ class ResultController extends Controller
                 'description'=>'required',
                 'image'=>'required',
                 'pdf'=>'required|mimes:pdf',
+                'official_url'=>'required'
             ]);
 
             // dd($data);
@@ -77,7 +79,7 @@ class ResultController extends Controller
     {
         $upload = Suggestion::find($id);
 
-        return view('result.edit',['upload'=>$upload]);
+        return view('notice.edit',['upload'=>$upload]);
     }
 
     /**
@@ -93,6 +95,7 @@ class ResultController extends Controller
                 'description'=>'sometimes|required',
                 'image'=>'sometimes|required',
                 'pdf'=>'sometimes|required|mimes:pdf',
+                'official_url'=>'sometimes|required'
             ]);
 
             $upload = Suggestion::find($id);
@@ -106,7 +109,7 @@ class ResultController extends Controller
 
             $upload->update($data);
 
-            return redirect()->route('result.index');
+            return redirect()->route('notice.index');
         }catch (\Exception $e){
             return response()->json(['error' => 'Something went wrong: '.$e->getMessage()], 500);
         }

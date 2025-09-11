@@ -1,22 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web;
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Models\Suggestion;
 use App\Models\User;
 use App\Notifications\FCMNotification;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
-class ScholarshipController extends Controller
+class ResultController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $suggestions = Suggestion::where('types','scholarship')->get();
-        return view('scholarship.index',['suggestions'=>$suggestions]);
+        $suggestions = Suggestion::where('types','result')->get();
+        return view('result.index',['suggestions'=>$suggestions]);
     }
 
     /**
@@ -24,7 +25,7 @@ class ScholarshipController extends Controller
      */
     public function create()
     {
-        return view('scholarship.create');
+        return view('result.create');
     }
 
     /**
@@ -77,7 +78,7 @@ class ScholarshipController extends Controller
     {
         $upload = Suggestion::find($id);
 
-        return view('scholarship.edit',['upload'=>$upload]);
+        return view('result.edit',['upload'=>$upload]);
     }
 
     /**
@@ -106,7 +107,7 @@ class ScholarshipController extends Controller
 
             $upload->update($data);
 
-            return redirect()->route('scholarship.index');
+            return redirect()->route('result.index');
         }catch (\Exception $e){
             return response()->json(['error' => 'Something went wrong: '.$e->getMessage()], 500);
         }

@@ -1,22 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web;
 
+use App\Http\Controllers\Controller;
 use App\Models\Suggestion;
 use App\Models\User;
 use App\Notifications\FCMNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
-class NoticeController extends Controller
+class ScholarshipController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $suggestions = Suggestion::where('types','notice')->get();
-        return view('notice.index',['suggestions'=>$suggestions]);
+        $suggestions = Suggestion::where('types','scholarship')->get();
+        return view('scholarship.index',['suggestions'=>$suggestions]);
     }
 
     /**
@@ -24,7 +25,7 @@ class NoticeController extends Controller
      */
     public function create()
     {
-        return view('notice.create');
+        return view('scholarship.create');
     }
 
     /**
@@ -40,7 +41,6 @@ class NoticeController extends Controller
                 'description'=>'required',
                 'image'=>'required',
                 'pdf'=>'required|mimes:pdf',
-                'official_url'=>'required'
             ]);
 
             // dd($data);
@@ -78,7 +78,7 @@ class NoticeController extends Controller
     {
         $upload = Suggestion::find($id);
 
-        return view('notice.edit',['upload'=>$upload]);
+        return view('scholarship.edit',['upload'=>$upload]);
     }
 
     /**
@@ -94,7 +94,6 @@ class NoticeController extends Controller
                 'description'=>'sometimes|required',
                 'image'=>'sometimes|required',
                 'pdf'=>'sometimes|required|mimes:pdf',
-                'official_url'=>'sometimes|required'
             ]);
 
             $upload = Suggestion::find($id);
@@ -108,7 +107,7 @@ class NoticeController extends Controller
 
             $upload->update($data);
 
-            return redirect()->route('notice.index');
+            return redirect()->route('scholarship.index');
         }catch (\Exception $e){
             return response()->json(['error' => 'Something went wrong: '.$e->getMessage()], 500);
         }

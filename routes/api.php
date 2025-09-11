@@ -19,7 +19,7 @@ Route::post('/device-id',[FeatuerController::class,'addDeviceId']);
 
 Route::post('/login',[DeviceController::class,'login']);
 
-//Route::group(['middleware' => CheckDeviceId::SSC], function () {
+//Route::group(['middleware' => CheckDeviceId::class], function () {
     Route::get('/class/SSC/PDF/{group}',[PDFController::class,'classGroup']);
     Route::get('/class/SSC/Shortcut/{group}',[ShortcutController::class,'index']);
     Route::get('/class/SSC/{id}',[PDFController::class,'classID']);

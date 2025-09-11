@@ -52,6 +52,9 @@
                                             <li class="nav-item">
                                                 <a class="nav-link" href="{{route('course.SSC.Shortcut')}}">Shortcut Technique</a>
                                             </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{route('course.SSC.All-PDF.create')}}">All PDF</a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </li>
@@ -97,6 +100,13 @@
                     </li>
 
                     <!--end nav-item-->
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('subjects.create') }}">
+                            <i class="iconoir-credit-cards menu-icon"></i>
+                            <span>Subjects</span>
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('suggestion.create') }}">
                             <i class="iconoir-credit-cards menu-icon"></i>
