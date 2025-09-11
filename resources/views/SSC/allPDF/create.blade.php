@@ -32,7 +32,7 @@
 
             <div class="mb-3">
                 <label for="class" class="form-label">Select Subjects</label>
-                @if($subjects)
+                @if($subjects->count() > 0)
                     <select class="form-select" id="class" name="subjects" required>
                         <option value="" selected disabled>-- Select Subjects --</option>
                         @foreach($subjects as $subject)
