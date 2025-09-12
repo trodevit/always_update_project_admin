@@ -15,8 +15,18 @@ class ShortcutController extends Controller
         return view('SSC.shortcut.index',['pdf' => $pdf]);
     }
 
+    public function videoindex()
+    {
+        $pdf = PDFCourse::where('class_name','SSC')->where('types','video_technique')->get();
+        return view('SSC.videoshortcut.index',['pdf' => $pdf]);
+    }
+
     public function create(){
         return view('SSC.shortcut.create');
+    }
+
+    public function videocreate(){
+        return view('SSC.videoshortcut.create');
     }
 
     public function store(Request $request){
@@ -47,7 +57,12 @@ class ShortcutController extends Controller
     public function edit($id){
         $pdf = PDFCourse::find($id);
 
-        return view('SSC.shortcut.edit',['pdf' => $pdf]);
+        if ($pdf->types == 'technique') {
+            return view('SSC.shortcut.edit', ['pdf' => $pdf]);
+        }
+        else{
+            return view('SSC.videoshortcut.edit', ['pdf' => $pdf]);
+        }
     }
 
     public function update(Request $request, $id){
@@ -73,7 +88,12 @@ class ShortcutController extends Controller
 
             $upload->update($data);
 
-            return redirect()->route('course.SSC.Shortcut.index');
+            if ($upload->types == 'technique') {
+                return redirect()->route('course.SSC.Shortcut.index');
+            }
+            else{
+                return redirect()->route('course.SSC.Shortcut.index.video');
+            }
         }
         catch (\Exception $exception){
             return response()->json($exception->getMessage());

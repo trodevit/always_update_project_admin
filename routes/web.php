@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\Web\AdminAuthController;
+use App\Http\Controllers\Web\AllPDFController;
 use App\Http\Controllers\Web\DashboardController;
 use App\Http\Controllers\Web\DeviceController;
 use App\Http\Controllers\Web\NoticeController;
@@ -9,11 +10,11 @@ use App\Http\Controllers\Web\PDFCourseController;
 use App\Http\Controllers\Web\ResultController;
 use App\Http\Controllers\Web\ScholarshipController;
 use App\Http\Controllers\Web\ShortcutController;
-use App\Http\Controllers\Web\SuggestionController;
-use App\Http\Controllers\AllPDFController;
-use App\Http\Middleware\AdminAuth;
 use App\Http\Controllers\Web\SubjectController;
+use App\Http\Controllers\Web\SuggestionController;
+use App\Http\Middleware\AdminAuth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\VideoCourseController;
 
 Route::get('/',[AdminAuthController::class,'index'])->name('home');
 
@@ -58,26 +59,39 @@ Route::group(['middleware' => AdminAuth::class], function () {
     Route::delete('/class/notice/delete/{id}',[NoticeController::class,'destroy'])->name('notice.delete');
 
     Route::get('/ssc/course/pdf',[PDFCourseController::class,'index'])->name('course.SSC');
+    Route::get('/ssc/course/video-course',[PDFCourseController::class,'videoindex'])->name('course.SSC.video');
     Route::get('/ssc/course/pdf-course',[PDFCourseController::class,'create'])->name('course.SSC.PDF-Course');
+    Route::get('/ssc/course/video-course/create',[PDFCourseController::class,'videocreate'])->name('course.SSC.video.create');
     Route::post('/ssc/course/pdf-course',[PDFCourseController::class,'store'])->name('course.SSC.Course');
     Route::get('/ssc/course/pdf-course/{id}',[PDFCourseController::class,'edit'])->name('course.SSC.edit');
     Route::patch('/ssc/course/pdf-course/{id}',[PDFCourseController::class,'update'])->name('course.SSC.update');
     Route::delete('/ssc/course/delete/{id}',[PDFCourseController::class,'destroy'])->name('course.SSC.delete');
 
     Route::get('/ssc/course/shortcut',[ShortcutController::class,'create'])->name('course.SSC.Shortcut');
+    Route::get('/ssc/course/video/shortcut/create',[ShortcutController::class,'videocreate'])->name('course.SSC.Shortcut.video');
     Route::get('/ssc/course/shortcut-technique',[ShortcutController::class,'index'])->name('course.SSC.Shortcut.index');
+    Route::get('/ssc/course/shortcut-technique/video',[ShortcutController::class,'videoindex'])->name('course.SSC.Shortcut.index.video');
     Route::post('/ssc/course/shortcut',[ShortcutController::class,'store'])->name('course.SSC.shortcut.store');
     Route::get('/ssc/course/shortcut/{id}',[ShortcutController::class,'edit'])->name('course.SSC.shortcut.edit');
     Route::patch('/ssc/course/shortcut/{id}',[ShortcutController::class,'update'])->name('course.SSC.shortcut.update');
 //    Route::delete('/SSC/SSC/Delete/{id}',[ShortcutController::SSC,'destroy'])->name('SSC.SSC.shortcut.delete');
 
     Route::get('/ssc/course/all-pdf',[AllPDFController::class,'index'])->name('course.SSC.All-PDF');
+    Route::get('/ssc/course/all-pdf/video',[AllPDFController::class,'videoindex'])->name('course.SSC.All-PDF.video');
     Route::get('/ssc/course/all-pdf/create',[AllPDFController::class,'create'])->name('course.SSC.All-PDF.create');
+    Route::get('/ssc/course/all-pdf/video/create',[AllPDFController::class,'videocreate'])->name('course.SSC.All-PDF.create.video');
     Route::post('/ssc/course/all-pdf',[AllPDFController::class,'store'])->name('course.SSC.All-PDF.store');
     Route::get('/ssc/course/all-pdf/{id}',[AllPDFController::class,'edit'])->name('course.SSC.All-PDF.edit');
     Route::patch('/ssc/course/all-pdf/{id}',[AllPDFController::class,'update'])->name('course.SSC.All-PDF.update');
     Route::delete('/ssc/course/all-pdf/{id}',[AllPDFController::class,'destroy'])->name('course.SSC.All-PDF.delete');
     Route::get('/subjects/{id}/related-data', [AllPDFController::class, 'relatedData']);
+
+    Route::get('/ssc/course/video/create',[VideoCourseController::class,'create'])->name('video.create');
+    Route::get('/ssc/course/video',[VideoCourseController::class,'index'])->name('video.index');
+    Route::post('/ssc/course/video',[VideoCourseController::class,'store'])->name('video.store');
+    Route::get('/ssc/course/video/{id}/edit',[VideoCourseController::class,'edit'])->name('video.edit');
+    Route::patch('/ssc/course/video/{id}/update',[VideoCourseController::class,'update'])->name('video.update');
+    Route::delete('/ssc/course/video/{id}/delete',[VideoCourseController::class,'destroy'])->name('video.delete');
 
     Route::get('/device_id',[DeviceController::class,'device_id'])->name('device_id');
     Route::post('/updatedeviceid/{device_id}',[DeviceController::class,'devicesUpdate'])->name('updatedeviceid');

@@ -18,6 +18,15 @@ class PDFController extends Controller
         return $this->successResponse($pdf,'All PDF From SSC');
     }
 
+    public function videoclassGroup($group)
+    {
+        $pdf = PDFCourse::where('class_name','SSC')
+            ->where('types','video_pdf')
+            ->where('group',$group)
+            ->get();
+        return $this->successResponse($pdf,'All PDF From SSC');
+    }
+
     public function classID($id)
     {
         $pdf = PDFCourse::find($id);

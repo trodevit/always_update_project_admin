@@ -13,8 +13,19 @@ class PDFCourseController extends Controller
         $pdf = PDFCourse::where('class_name','SSC')->where('types','pdf')->get();
         return view('SSC.pdf.index',['pdf' => $pdf]);
     }
+
+    public function videoindex()
+    {
+        $pdf = PDFCourse::where('class_name','SSC')->where('types','video_pdf')->get();
+        return view('SSC.videopdf.index',['pdf' => $pdf]);
+    }
+
     public function create(){
         return view('SSC.pdf.create');
+    }
+
+    public function videocreate(){
+        return view('SSC.videopdf.create');
     }
 
     public function store(Request $request){
@@ -44,7 +55,12 @@ class PDFCourseController extends Controller
     public function edit($id){
         $pdf = PDFCourse::find($id);
 
-        return view('SSC.pdf.edit',['pdf' => $pdf]);
+        if ($pdf->types == 'pdf') {
+            return view('SSC.pdf.edit', ['pdf' => $pdf]);
+        }
+        else{
+            return view('SSC.videopdf.edit', ['pdf' => $pdf]);
+        }
     }
 
     public function update(Request $request, $id){
@@ -70,7 +86,12 @@ class PDFCourseController extends Controller
 
             $upload->update($data);
 
-            return redirect()->route('course.SSC');
+            if ($upload->type == 'pdf') {
+                return redirect()->route('course.SSC');
+            }
+            else{
+                return redirect()->route('course.SSC.video');
+            }
         }
         catch (\Exception $exception){
             return response()->json($exception->getMessage());

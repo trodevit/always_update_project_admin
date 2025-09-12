@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web;
 
+use App\Http\Controllers\Controller;
 use App\Models\AllPDF;
 use App\Models\Subject;
 use Illuminate\Http\Request;
@@ -14,12 +15,22 @@ class AllPDFController extends Controller
      */
     public function index()
     {
-        $pdf = AllPDF::where('class_name','SSC')
+        $pdf = AllPDF::where('class_name','SSC')->where('types','all_pdf')
             ->join('subjects','subjects.id','=','all_p_d_f_s.subjects')
             ->select('all_p_d_f_s.*','subjects.subject')
             ->get();
 
         return view('SSC.allPDF.index', ['pdf' => $pdf]);
+    }
+
+    public function videoindex()
+    {
+        $pdf = AllPDF::where('class_name','SSC')->where('types','video_all_pdf')
+            ->join('subjects','subjects.id','=','all_p_d_f_s.subjects')
+            ->select('all_p_d_f_s.*','subjects.subject')
+            ->get();
+
+        return view('SSC.videoallpdf.index', ['pdf' => $pdf]);
     }
 
     /**
@@ -29,6 +40,12 @@ class AllPDFController extends Controller
     {
         $subjects = Subject::all();
         return view('SSC.allPDF.create',['subjects'=>$subjects]);
+    }
+
+    public function videocreate()
+    {
+        $subjects = Subject::all();
+        return view('SSC.videoallpdf.create',['subjects'=>$subjects]);
     }
 
     /**
@@ -75,7 +92,12 @@ class AllPDFController extends Controller
     {
         $upload = AllPDF::find($id);
         $subjects = Subject::all();
-        return view('SSC.allPDF.edit',['upload'=>$upload,'subjects'=>$subjects]);
+        if ($upload->type == 'all_pdf') {
+            return view('SSC.allPDF.edit', ['upload' => $upload, 'subjects' => $subjects]);
+        }
+        else{
+            return view('SSC.videoallpdf.edit', ['upload' => $upload, 'subjects' => $subjects]);
+        }
     }
 
     /**
@@ -106,7 +128,12 @@ class AllPDFController extends Controller
 
             $upload->update($data);
 
-            return redirect()->route('course.SSC.All-PDF');
+            if ($upload->type == 'all_pdf') {
+                return redirect()->route('course.SSC.All-PDF');
+            }
+            else{
+                return redirect()->route('course.SSC.All-PDF.video');
+            }
         }
         catch (\Exception $e) {
             return response()->json($e->getMessage());

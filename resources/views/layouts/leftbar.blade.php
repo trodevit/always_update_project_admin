@@ -50,10 +50,22 @@
                                                 <a class="nav-link" href="{{ route('course.SSC.PDF-Course') }}">PDF Course</a>
                                             </li>
                                             <li class="nav-item">
+                                                <a class="nav-link" href="{{ route('course.SSC.video.create') }}">Video PDF Course</a>
+                                            </li>
+                                            <li class="nav-item">
                                                 <a class="nav-link" href="{{route('course.SSC.Shortcut')}}">Shortcut Technique</a>
                                             </li>
                                             <li class="nav-item">
+                                                <a class="nav-link" href="{{route('course.SSC.Shortcut.video')}}">Video Shortcut Technique</a>
+                                            </li>
+                                            <li class="nav-item">
                                                 <a class="nav-link" href="{{route('course.SSC.All-PDF.create')}}">All PDF</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{route('course.SSC.All-PDF.create.video')}}">Video All PDF</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{route('video.create')}}">Video Course</a>
                                             </li>
                                         </ul>
                                     </div>

@@ -17,9 +17,26 @@ class ShortcutController extends Controller
         return $this->successResponse($shortcut,'Shortcut List');
     }
 
-    public function allPDF($group, $question_types,$subject_id)
+    public function videoindex($group)
+    {
+        $shortcut = PDFCourse::where('group', $group)->where('class_name','SSC')->where('types','video_technique')->get();
+
+        return $this->successResponse($shortcut,'Shortcut List');
+    }
+
+    public function allPDF($group, $question_types, $subject_id)
     {
         $shortcut = AllPDF::where('group', $group)->where('class_name','SSC')->where('types','all_pdf')
+            ->where('question_types',$question_types)
+            ->where('subjects',$subject_id)
+            ->get();
+
+        return $this->successResponse($shortcut,'All PDF List');
+    }
+
+    public function videoallPDF($group, $question_types, $subject_id)
+    {
+        $shortcut = AllPDF::where('group', $group)->where('class_name','SSC')->where('types','video_all_pdf')
             ->where('question_types',$question_types)
             ->where('subjects',$subject_id)
             ->get();
@@ -32,5 +49,14 @@ class ShortcutController extends Controller
         $subjects = Subject::all();
 
         return $this->successResponse($subjects,'Subject List');
+    }
+
+    public function videoCourse($group, $subject_id)
+    {
+        $shortcut = AllPDF::where('group', $group)->where('class_name','SSC')->where('types','video')
+            ->where('subjects',$subject_id)
+            ->get();
+
+        return $this->successResponse($shortcut,'All PDF List');
     }
 }
