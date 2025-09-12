@@ -77,6 +77,7 @@ Route::group(['middleware' => AdminAuth::class], function () {
     Route::get('/ssc/course/all-pdf/{id}',[AllPDFController::class,'edit'])->name('course.SSC.All-PDF.edit');
     Route::patch('/ssc/course/all-pdf/{id}',[AllPDFController::class,'update'])->name('course.SSC.All-PDF.update');
     Route::delete('/ssc/course/all-pdf/{id}',[AllPDFController::class,'destroy'])->name('course.SSC.All-PDF.delete');
+    Route::get('/subjects/{id}/related-data', [AllPDFController::class, 'relatedData']);
 
     Route::get('/device_id',[DeviceController::class,'device_id'])->name('device_id');
     Route::post('/updatedeviceid/{device_id}',[DeviceController::class,'devicesUpdate'])->name('updatedeviceid');

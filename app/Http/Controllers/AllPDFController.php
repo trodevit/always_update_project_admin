@@ -132,4 +132,17 @@ class AllPDFController extends Controller
 
         return redirect()->back();
     }
+
+    public function relatedData($id)
+    {
+        $subject = Subject::findOrFail($id);
+
+        // Get all related PDFs with titles
+        $pdfs = AllPDF::where('subjects', $id)->pluck('title');
+
+        return response()->json([
+            'titles' => $pdfs, // send all titles
+        ]);
+    }
+
 }
