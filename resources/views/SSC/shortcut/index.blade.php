@@ -36,7 +36,7 @@
                 <td><a href="{{ asset($course->pdf) }}" target="_blank">Download PDF</a></td>
                 <td>
                     <a href="{{ route('course.SSC.shortcut.edit', $course->id) }}" class="btn btn-sm btn-primary">Edit</a>
-                    <form action="{{ route('course.SSC.delete', $course->id) }}" method="POST" style="display:inline;">
+                    <form id="delete-form-{{ $course->id }}" action="{{ route('course.SSC.delete', $course->id) }}" method="POST" style="display:inline;">
                         @csrf
                         @method('DELETE')
                         <button type="button" class="btn btn-sm btn-danger" onclick="confirmDelete({{ $course->id }})">Delete</button>

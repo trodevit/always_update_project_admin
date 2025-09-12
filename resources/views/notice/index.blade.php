@@ -38,7 +38,7 @@
                 </td>
                 <td>
                     <a href="{{ route('notice.edit', $course->id) }}" class="btn btn-sm btn-primary">Edit</a>
-                    <form action="{{ route('notice.delete', $course->id) }}" method="POST" style="display:inline;">
+                    <form id="delete-form-{{ $course->id }}" action="{{ route('notice.delete', $course->id) }}" method="POST" style="display:inline;">
                         @csrf
                         @method('DELETE')
                         <button type="button" class="btn btn-sm btn-danger" onclick="confirmDelete({{ $course->id }})">Delete</button>
