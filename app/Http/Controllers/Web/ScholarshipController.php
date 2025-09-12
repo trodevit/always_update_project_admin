@@ -130,6 +130,6 @@ class ScholarshipController extends Controller
 
         $suggestion->delete();
 
-        return response()->json('Suggestion successfully deleted');
+        return redirect()->back();
     }
 }
