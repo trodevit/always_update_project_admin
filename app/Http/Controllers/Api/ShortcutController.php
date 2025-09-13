@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\AllPDF;
+use App\Models\HonorsQuestion;
 use App\Models\PDFCourse;
 use App\Models\Subject;
 use Illuminate\Http\Request;
@@ -55,6 +56,15 @@ class ShortcutController extends Controller
     {
         $shortcut = AllPDF::where('group', $group)->where('class_name','SSC')->where('types','video')
             ->where('subjects',$subject_id)
+            ->get();
+
+        return $this->successResponse($shortcut,'All PDF List');
+    }
+
+    public function mcqQuestion($group, $subject_id)
+    {
+        $shortcut = HonorsQuestion::where('group', $group)->where('class_name','honors')->where('question','question_pdf')
+            ->where('subject',$subject_id)
             ->get();
 
         return $this->successResponse($shortcut,'All PDF List');

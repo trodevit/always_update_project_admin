@@ -20,12 +20,21 @@ class PDFCourseController extends Controller
         return view('SSC.videopdf.index',['pdf' => $pdf]);
     }
 
+    public function honorsindex()
+    {
+        $pdf = PDFCourse::where('class_name','honors')->where('types','grppdf')->get();
+        return view('honors.grppdf.index',['pdf' => $pdf]);
+    }
     public function create(){
         return view('SSC.pdf.create');
     }
 
     public function videocreate(){
         return view('SSC.videopdf.create');
+    }
+
+    public function honorscreate(){
+        return view('honors.grppdf.create');
     }
 
     public function store(Request $request){
@@ -58,6 +67,9 @@ class PDFCourseController extends Controller
         if ($pdf->types == 'pdf') {
             return view('SSC.pdf.edit', ['pdf' => $pdf]);
         }
+        elseif ($pdf->types == 'grppdf'){
+            return view('honors.grppdf.edit', ['pdf' => $pdf]);
+        }
         else{
             return view('SSC.videopdf.edit', ['pdf' => $pdf]);
         }
@@ -88,6 +100,9 @@ class PDFCourseController extends Controller
 
             if ($upload->type == 'pdf') {
                 return redirect()->route('course.SSC');
+            }
+            elseif ($upload->types == 'grppdf'){
+                return redirect()->route('course.honors');
             }
             else{
                 return redirect()->route('course.SSC.video');

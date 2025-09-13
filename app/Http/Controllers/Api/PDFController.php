@@ -27,6 +27,15 @@ class PDFController extends Controller
         return $this->successResponse($pdf,'All PDF From SSC');
     }
 
+    public function honorsGroup($group)
+    {
+        $pdf = PDFCourse::where('class_name','honors')
+            ->where('types','grppdf')
+            ->where('group',$group)
+            ->get();
+        return $this->successResponse($pdf,'All PDF From SSC');
+    }
+
     public function classID($id)
     {
         $pdf = PDFCourse::find($id);

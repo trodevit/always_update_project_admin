@@ -98,10 +98,10 @@
                                     <div class="collapse" id="honoursMenu">
                                         <ul class="nav flex-column ms-3">
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#">PDF Course</a>
+                                                <a class="nav-link" href="{{ route('course.honors.create') }}">PDF Course</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#">Video Course</a>
+                                                <a class="nav-link" href="{{ route('honors.create') }}">MCQ Question</a>
                                             </li>
                                         </ul>
                                     </div>

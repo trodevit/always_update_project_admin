@@ -1,26 +1,26 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web;
 
-use App\Models\AllPDF;
+use App\Http\Controllers\Controller;
+use App\Models\HonorsQuestion;
 use App\Models\Subject;
-use App\Models\VideoCourse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
-class VideoCourseController extends Controller
+class HonorsQuestionController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $pdf = VideoCourse::where('class_name','SSC')->where('types','video')
-            ->join('subjects','subjects.id','=','video_courses.subjects')
-            ->select('video_courses.*','subjects.subject')
+        $pdf = HonorsQuestion::where('class_name','honors')->where('question','question_pdf')
+            ->join('subjects','subjects.id','=','honors_questions.subject')
+            ->select('honors_questions.*','subjects.subject')
             ->get();
 
-        return view('SSC.video.index', ['pdf' => $pdf]);
+        return view('honors.question.index', ['pdf' => $pdf]);
     }
 
     /**
@@ -29,7 +29,7 @@ class VideoCourseController extends Controller
     public function create()
     {
         $subjects = Subject::all();
-        return view('SSC.video.create',['subjects'=>$subjects]);
+        return view('honors.question.create',['subjects'=>$subjects]);
     }
 
     /**
@@ -40,18 +40,20 @@ class VideoCourseController extends Controller
         try {
             $data = $request->validate([
                 'class_name'=>'required',
-                'types'=>'required',
+                'question'=>'required',
                 'group'=>'required',
-                'subjects'=>'required',
+                'subject'=>'required',
                 'title'=>'required',
                 'thumbnail'=>'required',
-                'url'=>'required'
+                'pdf'=>'required'
             ]);
 
             $data['thumbnail']=$this->uploadFile($data['thumbnail'],'thumbnail/');
+            $data['pdf']=$this->uploadFile($data['pdf'],'pdf/');
 
-            $upload = VideoCourse::create($data);
+            $upload = HonorsQuestion::create($data);
 
+//            return response()->json($upload);
             return redirect()->back();
         }
         catch (\Exception $e) {
@@ -72,11 +74,10 @@ class VideoCourseController extends Controller
      */
     public function edit(string $id)
     {
-        $upload = VideoCourse::find($id);
+        $upload = HonorsQuestion::find($id);
         $subjects = Subject::all();
 
-        return view('SSC.video.edit', ['upload' => $upload, 'subjects' => $subjects]);
-
+        return view('honors.question.edit', ['upload' => $upload, 'subjects' => $subjects]);
     }
 
     /**
@@ -87,23 +88,27 @@ class VideoCourseController extends Controller
         try {
             $data = $request->validate([
                 'class_name'=>'sometimes|required',
-                'types'=>'sometimes|required',
+                'question'=>'sometimes|required',
                 'group'=>'sometimes|required',
                 'subjects'=>'sometimes|required',
                 'title'=>'sometimes|required',
                 'thumbnail'=>'sometimes|required',
-                'url'=>'sometimes|required'
+                'pdf'=>'sometimes|required'
             ]);
 
-            $upload = VideoCourse::find($id);
+            $upload = HonorsQuestion::find($id);
 
             if ($request->hasFile('thumbnail')) {
                 $data['thumbnail'] = $this->uploadFile($data['thumbnail'], 'thumbnail/',$upload->thumbnail);
             }
 
+            if ($request->hasFile('pdf')) {
+                $data['pdf'] = $this->uploadFile($data['pdf'], 'pdf/',$upload->pdf);
+            }
+
             $upload->update($data);
 
-                return redirect()->route('video.index');
+            return redirect()->route('honors.index');
         }
         catch (\Exception $e) {
             return response()->json($e->getMessage());
@@ -115,13 +120,16 @@ class VideoCourseController extends Controller
      */
     public function destroy(string $id)
     {
-        $upload = VideoCourse::find($id);
+        $upload = HonorsQuestion::find($id);
 
 
         if ($upload->thumbnail && File::exists(public_path($upload->thumbnail))) {
             File::delete(public_path($upload->thumbnail));
         }
 
+        if ($upload->pdf && File::exists(public_path($upload->pdf))) {
+            File::delete(public_path($upload->pdf));
+        }
         $upload->delete();
 
         return redirect()->back();
