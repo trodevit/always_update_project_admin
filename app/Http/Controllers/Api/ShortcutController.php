@@ -7,6 +7,7 @@ use App\Models\AllPDF;
 use App\Models\HonorsQuestion;
 use App\Models\PDFCourse;
 use App\Models\Subject;
+use App\Models\VideoCourse;
 use Illuminate\Http\Request;
 
 class ShortcutController extends Controller
@@ -55,7 +56,7 @@ class ShortcutController extends Controller
     public function videoCourse($group, $subject_id)
     {
 
-        $shortcut = AllPDF::where('group',$group)->where('subjects',$subject_id)->get();
+        $shortcut = VideoCourse::where('group',$group)->where('subjects',$subject_id)->get();
 //        $shortcut = AllPDF::where('group', $group)->where('class_name','SSC')->where('types','video')
 //            ->where('subjects',$subject_id)
 //            ->get();
