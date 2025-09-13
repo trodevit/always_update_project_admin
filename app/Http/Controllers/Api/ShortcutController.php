@@ -55,13 +55,10 @@ class ShortcutController extends Controller
 
     public function videoCourse($group, $subject_id)
     {
+        $shortcut = VideoCourse::where('group', $group)->where('class_name','SSC')->where('types','video')
+            ->where('subjects',$subject_id)
+            ->get();
 
-        $shortcut = VideoCourse::where('group',$group)->where('subjects',$subject_id)->get();
-//        $shortcut = AllPDF::where('group', $group)->where('class_name','SSC')->where('types','video')
-//            ->where('subjects',$subject_id)
-//            ->get();
-
-        dd($shortcut);
         return $this->successResponse($shortcut,'All PDF List');
     }
 
