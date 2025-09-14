@@ -6,6 +6,17 @@
         <form action="{{route('subjects.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <!-- Title -->
+
+            <div class="mb-3">
+                <label for="class" class="form-label">Select Class</label>
+                <select class="form-select" id="class" name="class" required>
+                    <option value="" selected disabled>-- Select Class --</option>
+                    <option value="ssc">SSC</option>
+                    <option value="hsc">HSC</option>
+                    <option value="honors">Honors</option>
+                </select>
+            </div>
+
             <div class="mb-3">
                 <label for="title" class="form-label">Subject Title</label>
                 <input type="text" class="form-control" id="title" name="subject" placeholder="Enter subject name" required>
@@ -22,6 +33,7 @@
             <thead class="table-dark">
             <tr>
                 <th>Subject</th>
+                <th>Class</th>
                 <th>Action</th>
             </tr>
             </thead>
@@ -35,6 +47,14 @@
                 <tr>
                     <td>
                         <input type="text" name="subject" value="{{ $course->subject }}" class="form-control" form="update-form-{{ $course->id }}">
+                    </td>
+                    <td>
+                        <select class="form-select" id="class" name="class" required form="update-form-{{ $course->id }}">
+                            <option value="" selected disabled>-- Select Class --</option>
+                            <option value="ssc" {{ $course->class == 'ssc' ? 'selected' : '' }}>SSC</option>
+                            <option value="hsc" {{ $course->class == 'hsc' ? 'selected' : '' }}>HSC</option>
+                            <option value="honors" {{ $course->class == 'honors' ? 'selected' : '' }}>Honors</option>
+                        </select>
                     </td>
                     <td>
                         <form id="update-form-{{ $course->id }}" action="{{route('subjects.update',$course->id)}}" method="POST" style="display:inline;">

@@ -38,13 +38,13 @@ class AllPDFController extends Controller
      */
     public function create()
     {
-        $subjects = Subject::all();
+        $subjects = Subject::where('class','ssc')->get();
         return view('SSC.allPDF.create',['subjects'=>$subjects]);
     }
 
     public function videocreate()
     {
-        $subjects = Subject::all();
+        $subjects = Subject::where('class','ssc')->get();
         return view('SSC.videoallpdf.create',['subjects'=>$subjects]);
     }
 
@@ -91,7 +91,7 @@ class AllPDFController extends Controller
     public function edit(string $id)
     {
         $upload = AllPDF::find($id);
-        $subjects = Subject::all();
+        $subjects = Subject::where('class','ssc')->get();
         if ($upload->type == 'all_pdf') {
             return view('SSC.allPDF.edit', ['upload' => $upload, 'subjects' => $subjects]);
         }
@@ -164,7 +164,6 @@ class AllPDFController extends Controller
     {
         $subject = Subject::findOrFail($id);
 
-        // Get all related PDFs with titles
         $pdfs = AllPDF::where('subjects', $id)->pluck('title');
 
         return response()->json([

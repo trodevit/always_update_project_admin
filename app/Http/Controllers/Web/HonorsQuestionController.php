@@ -28,7 +28,7 @@ class HonorsQuestionController extends Controller
      */
     public function create()
     {
-        $subjects = Subject::all();
+        $subjects = Subject::where('class','honors')->get();
         return view('honors.question.create',['subjects'=>$subjects]);
     }
 
@@ -75,7 +75,7 @@ class HonorsQuestionController extends Controller
     public function edit(string $id)
     {
         $upload = HonorsQuestion::find($id);
-        $subjects = Subject::all();
+        $subjects = Subject::where('class','honors')->get();
 
         return view('honors.question.edit', ['upload' => $upload, 'subjects' => $subjects]);
     }

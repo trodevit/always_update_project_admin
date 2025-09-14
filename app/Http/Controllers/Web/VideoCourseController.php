@@ -28,7 +28,7 @@ class VideoCourseController extends Controller
      */
     public function create()
     {
-        $subjects = Subject::all();
+        $subjects = Subject::where('class','ssc')->get();
         return view('SSC.video.create',['subjects'=>$subjects]);
     }
 
@@ -73,7 +73,7 @@ class VideoCourseController extends Controller
     public function edit(string $id)
     {
         $upload = VideoCourse::find($id);
-        $subjects = Subject::all();
+        $subjects = Subject::where('class','ssc')->get();
 
         return view('SSC.video.edit', ['upload' => $upload, 'subjects' => $subjects]);
 
