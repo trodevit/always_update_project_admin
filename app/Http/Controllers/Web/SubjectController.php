@@ -75,7 +75,7 @@ class SubjectController extends Controller
         ]);
 
         $subjects = Subject::find($id);
-        if ($data['class']=='honors') {
+        if ($subjects->class == 'honors') {
             $data['group'] = null;
             $subjects->update($data);
         }

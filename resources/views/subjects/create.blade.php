@@ -70,9 +70,9 @@
                     <td>
                         <select class="form-select" id="class" name="group" required form="update-form-{{ $course->id }}">
                             <option value="" selected disabled>-- Select Group --</option>
-                            <option value="science" {{ $course->class == 'science' ? 'selected' : '' }}>Science</option>
-                            <option value="commerce" {{ $course->class == 'commerce' ? 'selected' : '' }}>Commerce</option>
-                            <option value="arts" {{ $course->class == 'arts' ? 'selected' : '' }}>Arts</option>
+                            <option value="science" {{ $course->group == 'science' ? 'selected' : '' }}>Science</option>
+                            <option value="commerce" {{ $course->group == 'commerce' ? 'selected' : '' }}>Commerce</option>
+                            <option value="arts" {{ $course->group == 'arts' ? 'selected' : '' }}>Arts</option>
                         </select>
                     </td>
                     <td>
