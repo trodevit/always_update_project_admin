@@ -17,11 +17,10 @@ class CheckDeviceId
      */
     public function handle(Request $request, Closure $next): Response
     {
-//        dd($request->all());
-        $email = $request->route('email');
-        $deviceId = $request->route('device_id');
+        $email = $request->query('email');
+        $deviceId = $request->query('device_id');
+//        dd($email, $deviceId);
         $user = User::where('email',$email)->first();
-
         if (!$user) {
             return response()->json([
                 'status' => false,

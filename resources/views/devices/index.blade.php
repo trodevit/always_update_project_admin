@@ -29,6 +29,7 @@
                     <th>Password</th>
                     <th>Visited Count</th>
                     <th>Created At</th>
+                    <th>Levels</th> <!-- New column for checkboxes -->
                     <th>Update</th>
                     <th>Delete</th>
                 </tr>
@@ -49,10 +50,39 @@
                             </td>
                             <td>{{$devices->login_count}}</td>
                             <td>{{$devices->created_at}}</td>
+
+                            <!-- Checkboxes for SSC, HSC, Honors -->
+                            <td>
+                                @php
+                                    $levels = old('levels', $devices->levels ?? []);
+                                    if (is_string($levels)) {
+                                        $levels = json_decode($levels, true) ?? [];
+                                    }
+                                @endphp
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="levels[]" value="SSC"
+                                        {{ in_array('SSC', $levels) ? 'checked' : '' }}>
+                                    <label class="form-check-label">SSC</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="levels[]" value="HSC"
+                                        {{ in_array('HSC', $levels) ? 'checked' : '' }}>
+                                    <label class="form-check-label">HSC</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="levels[]" value="Honors"
+                                        {{ in_array('Honors', $levels) ? 'checked' : '' }}>
+                                    <label class="form-check-label">Honors</label>
+                                </div>
+
+                            </td>
+
                             <td>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </td>
                         </form>
+
                         <td>
                             <!-- Delete button triggers modal -->
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $devices->id }}">
@@ -88,5 +118,6 @@
                 </tbody>
             </table>
         </div>
+
     </div>
 @endsection

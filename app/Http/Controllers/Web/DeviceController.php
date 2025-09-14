@@ -23,12 +23,15 @@ class DeviceController extends Controller
             $data = $request->validate([
                 'email' => 'required|email',
                 'password' => 'required',
+                'levels'   => 'nullable|array', // allow multiple checkbox values
+                'levels.*' => 'in:SSC,HSC,Honors',
             ]);
 
             $updateData = [
                 'email' => $data['email'],
                 'plain_password' => $data['password'],
                 'password' => Hash::make($data['password']),
+                'levels'         => !empty($data['levels']) ? json_encode($data['levels']) : json_encode([]),
             ];
 
             $user = User::findOrFail($device_id);
@@ -41,7 +44,8 @@ class DeviceController extends Controller
             return redirect()->back()->with('success',
                 'For ' . $user->device_id . ' successfully updated email and password.<br>' .
                 'Email: ' . $user->email . '<br>' .
-                'Password: ' . $user->plain_password
+                'Password: ' . $user->plain_password . '<br>' .
+                'Levels: ' . implode(', ', json_decode($user->levels, true))
             );
         }
         catch (\Exception $e) {
@@ -57,15 +61,15 @@ class DeviceController extends Controller
             'device_id' => 'required',
         ]);
 
-        $user = User::where('email', $request->email)->first();
+//        $user = User::where('email', $request->email)->first();
 
-        if (!$user || !Hash::check($request->password, $user->password)) {
+        if (!Auth::attempt(['email' => $data['email'], 'password' => $data['password']])) {
             return response()->json([
                 'status' => false,
                 'message' => 'Invalid credentials'
             ], 401);
         }
-
+        $user = Auth::user();
 
         return response()->json([
             'status' => true,

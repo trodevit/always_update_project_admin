@@ -4,13 +4,20 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\PDFCourse;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PDFController extends Controller
 {
 
-    public function classGroup($group)
+    public function classGroup($group, Request $request)
     {
+//        $user = User::where('email',$request->query('email'))->first();
+//        Auth::login($user);
+//
+//        $this->authorize('accessSSC',auth()->user());
+
         $pdf = PDFCourse::where('class_name','SSC')
             ->where('types','pdf')
             ->where('group',$group)

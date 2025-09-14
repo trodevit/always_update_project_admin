@@ -27,6 +27,7 @@ class User extends Authenticatable
         'plain_password',
         'login_count',
         'password',
+        'levels'
     ];
 
     /**
@@ -51,4 +52,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    protected $casts = [
+        'levels' => 'array',
+    ];
+
 }
