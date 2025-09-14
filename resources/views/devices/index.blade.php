@@ -53,30 +53,23 @@
 
                             <!-- Checkboxes for SSC, HSC, Honors -->
                             <td>
-                                @php
-                                    $levels = old('levels', $devices->levels ?? []);
-                                    if (is_string($levels)) {
-                                        $levels = json_decode($levels, true) ?? [];
-                                    }
-                                @endphp
-
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="levels[]" value="SSC"
-                                        {{ in_array('SSC', $levels) ? 'checked' : '' }}>
+                                    <input class="form-check-input" type="checkbox" name="ssc" value="1"
+                                        {{ old('ssc', $devices->ssc) ? 'checked' : '' }}>
                                     <label class="form-check-label">SSC</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="levels[]" value="HSC"
-                                        {{ in_array('HSC', $levels) ? 'checked' : '' }}>
+                                    <input class="form-check-input" type="checkbox" name="hsc" value="1"
+                                        {{ old('hsc', $devices->hsc) ? 'checked' : '' }}>
                                     <label class="form-check-label">HSC</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="levels[]" value="Honors"
-                                        {{ in_array('Honors', $levels) ? 'checked' : '' }}>
+                                    <input class="form-check-input" type="checkbox" name="honors" value="1"
+                                        {{ old('honors', $devices->honors) ? 'checked' : '' }}>
                                     <label class="form-check-label">Honors</label>
                                 </div>
-
                             </td>
+
 
                             <td>
                                 <button type="submit" class="btn btn-primary">Submit</button>

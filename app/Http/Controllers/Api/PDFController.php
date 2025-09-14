@@ -7,22 +7,21 @@ use App\Models\PDFCourse;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class PDFController extends Controller
 {
 
-    public function classGroup($group, Request $request)
+    public function classGroup($group)
     {
-//        $user = User::where('email',$request->query('email'))->first();
-//        Auth::login($user);
-//
-//        $this->authorize('accessSSC',auth()->user());
 
-        $pdf = PDFCourse::where('class_name','SSC')
-            ->where('types','pdf')
-            ->where('group',$group)
+        $pdf = PDFCourse::where('class_name', 'SSC')
+            ->where('types', 'pdf')
+            ->where('group', $group)
             ->get();
-        return $this->successResponse($pdf,'All PDF From SSC');
+
+        return $this->successResponse($pdf, 'All PDF From SSC');
+
     }
 
     public function videoclassGroup($group)

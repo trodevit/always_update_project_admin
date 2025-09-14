@@ -125,4 +125,6 @@ return [
 
     'device_check_enabled' => env('DEVICE_CHECK_ENABLED', false),
 
+
+
 ];

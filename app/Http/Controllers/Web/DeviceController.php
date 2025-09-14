@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class DeviceController extends Controller
 {
@@ -23,29 +24,35 @@ class DeviceController extends Controller
             $data = $request->validate([
                 'email' => 'required|email',
                 'password' => 'required',
-                'levels'   => 'nullable|array', // allow multiple checkbox values
-                'levels.*' => 'in:SSC,HSC,Honors',
+                'ssc'     => 'nullable|boolean',
+                'hsc'     => 'nullable|boolean',
+                'honors'  => 'nullable|boolean',
             ]);
 
             $updateData = [
                 'email' => $data['email'],
                 'plain_password' => $data['password'],
                 'password' => Hash::make($data['password']),
-                'levels'         => !empty($data['levels']) ? json_encode($data['levels']) : json_encode([]),
+                'ssc'            => $data['ssc'] ?? 0,
+                'hsc'            => $data['hsc'] ?? 0,
+                'honors'         => $data['honors'] ?? 0,
             ];
 
             $user = User::findOrFail($device_id);
 
 
           $user->update($updateData);
-
+            $selectedLevels = [];
+            if ($user->ssc) $selectedLevels[] = 'SSC';
+            if ($user->hsc) $selectedLevels[] = 'HSC';
+            if ($user->honors) $selectedLevels[] = 'Honors';
 
 
             return redirect()->back()->with('success',
                 'For ' . $user->device_id . ' successfully updated email and password.<br>' .
                 'Email: ' . $user->email . '<br>' .
                 'Password: ' . $user->plain_password . '<br>' .
-                'Levels: ' . implode(', ', json_decode($user->levels, true))
+                'Levels: ' . implode(', ', $selectedLevels)
             );
         }
         catch (\Exception $e) {
@@ -61,20 +68,22 @@ class DeviceController extends Controller
             'device_id' => 'required',
         ]);
 
-//        $user = User::where('email', $request->email)->first();
-
+        // Attempt to log in the user
         if (!Auth::attempt(['email' => $data['email'], 'password' => $data['password']])) {
             return response()->json([
                 'status' => false,
                 'message' => 'Invalid credentials'
             ], 401);
         }
+
+        // Get the authenticated user
         $user = Auth::user();
 
         return response()->json([
             'status' => true,
             'message' => 'Login successful',
-            'user' => $user
+            'user' => $user,
         ]);
     }
+
 }
