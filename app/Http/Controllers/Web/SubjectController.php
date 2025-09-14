@@ -36,13 +36,9 @@ class SubjectController extends Controller
             'group'=>'string'
         ]);
 
-        if ($data['class']=='honors') {
-            $data['group']=null;
+
             Subject::create($data);
-        }
-        else{
-            Subject::create($data);
-        }
+
 
         return redirect()->back();
     }
@@ -75,13 +71,9 @@ class SubjectController extends Controller
         ]);
 
         $subjects = Subject::find($id);
-        if ($subjects->class == 'honors') {
-            $data['group'] = null;
+
             $subjects->update($data);
-        }
-        else{
-            $subjects->update($data);
-        }
+
 
         return redirect()->back();
     }
