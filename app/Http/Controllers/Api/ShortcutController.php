@@ -48,7 +48,21 @@ class ShortcutController extends Controller
 
     public function subjects()
     {
-        $subjects = Subject::all();
+        $subjects = Subject::where('class','ssc')->get();
+
+        return $this->successResponse($subjects,'Subject List');
+    }
+
+    public function hscsubjects()
+    {
+        $subjects = Subject::where('class','hsc')->get();
+
+        return $this->successResponse($subjects,'Subject List');
+    }
+
+    public function honorssubjects()
+    {
+        $subjects = Subject::where('class','honors')->get();
 
         return $this->successResponse($subjects,'Subject List');
     }
@@ -70,4 +84,6 @@ class ShortcutController extends Controller
 
         return $this->successResponse($shortcut,'All PDF List');
     }
+
+
 }

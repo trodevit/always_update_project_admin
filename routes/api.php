@@ -38,7 +38,11 @@ Route::post('/login',[DeviceController::class,'login']);
 
     Route::get('/class/ssc/{id}',[PDFController::class,'classID']);
 
-    Route::get('/subjects',[ShortcutController::class,'subjects']);
+    Route::get('/ssc/subjects',[ShortcutController::class,'subjects']);
+
+    Route::get('/hsc/subjects',[ShortcutController::class,'hscsubjects']);
+
+    Route::get('/honors/subjects',[ShortcutController::class,'honorssubjects']);
 
     Route::get('/class/ssc/video/{group}/{subject_id}',[ShortcutController::class,'videoCourse']);
 
