@@ -18,6 +18,16 @@
             </div>
 
             <div class="mb-3">
+                <label for="class" class="form-label">Select Group</label>
+                <select class="form-select" id="class" name="group">
+                    <option value="" selected disabled>-- Select Group --</option>
+                    <option value="science">Science</option>
+                    <option value="commerce">Commerce</option>
+                    <option value="arts">Arts</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
                 <label for="title" class="form-label">Subject Title</label>
                 <input type="text" class="form-control" id="title" name="subject" placeholder="Enter subject name" required>
             </div>
@@ -34,6 +44,7 @@
             <tr>
                 <th>Subject</th>
                 <th>Class</th>
+                <th>Group</th>
                 <th>Action</th>
             </tr>
             </thead>
@@ -54,6 +65,14 @@
                             <option value="ssc" {{ $course->class == 'ssc' ? 'selected' : '' }}>SSC</option>
                             <option value="hsc" {{ $course->class == 'hsc' ? 'selected' : '' }}>HSC</option>
                             <option value="honors" {{ $course->class == 'honors' ? 'selected' : '' }}>Honors</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select class="form-select" id="class" name="group" required form="update-form-{{ $course->id }}">
+                            <option value="" selected disabled>-- Select Group --</option>
+                            <option value="science" {{ $course->class == 'science' ? 'selected' : '' }}>Science</option>
+                            <option value="commerce" {{ $course->class == 'commerce' ? 'selected' : '' }}>Commerce</option>
+                            <option value="arts" {{ $course->class == 'arts' ? 'selected' : '' }}>Arts</option>
                         </select>
                     </td>
                     <td>

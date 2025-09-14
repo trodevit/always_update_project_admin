@@ -32,10 +32,17 @@ class SubjectController extends Controller
     {
         $data = $request->validate([
             'subject' => 'required',
-            'class'=>'required'
+            'class'=>'required',
+            'group'=>'string'
         ]);
 
-        Subject::create($data);
+        if ($data['class']=='honors') {
+            $data['group']=null;
+            Subject::create($data);
+        }
+        else{
+            Subject::create($data);
+        }
 
         return redirect()->back();
     }
@@ -63,12 +70,18 @@ class SubjectController extends Controller
     {
         $data = $request->validate([
             'subject' => 'required',
-            'class'=>'required'
+            'class'=>'required',
+            'group'=>'string'
         ]);
 
         $subjects = Subject::find($id);
-
-        $subjects->update($data);
+        if ($data['class']=='honors') {
+            $data['group'] = null;
+            $subjects->update($data);
+        }
+        else{
+            $subjects->update($data);
+        }
 
         return redirect()->back();
     }
