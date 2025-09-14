@@ -33,18 +33,24 @@
             <div class="mb-3">
                 <label for="class" class="form-label">Select Subjects</label>
                 @if($subjects->count() > 0)
-                    <select class="form-select" id="class" name="subjects" required>
-                        <option value="" selected disabled>-- Select Subjects --</option>
-                        @foreach($subjects as $subject)
-                            <option value="{{$subject->id}}">{{$subject->subject}}</option>
-                        @endforeach
-                    </select>
+                    <div class="d-flex gap-2">
+                        <select class="form-select" id="class" name="subjects" required>
+                            <option value="" selected disabled>-- Select Subjects --</option>
+                            @foreach($subjects as $subject)
+                                <option value="{{$subject->id}}">{{$subject->subject}}</option>
+                            @endforeach
+                        </select>
+                        <a href="{{ route('subjects.create') }}" class="btn btn-sm btn-success">
+                            Add More Subjects
+                        </a>
+                    </div>
                 @else
                     <p class="text-danger">
                         You currently have no subjects. Please add subjects first from the <a href="{{ route('subjects.create') }}">Subjects</a> page.
                     </p>
                 @endif
             </div>
+
 
             <!-- Title -->
             <div class="mb-3">
