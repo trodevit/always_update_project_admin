@@ -90,7 +90,7 @@ class HonorsQuestionController extends Controller
                 'class_name'=>'sometimes|required',
                 'question'=>'sometimes|required',
                 'group'=>'sometimes|required',
-                'subjects'=>'sometimes|required',
+                'subject'=>'sometimes|required',
                 'title'=>'sometimes|required',
                 'thumbnail'=>'sometimes|required',
                 'pdf'=>'sometimes|required'

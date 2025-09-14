@@ -23,7 +23,7 @@
             <div class="mb-3">
                 <label for="class" class="form-label">Select Subjects</label>
                 @if($subjects)
-                    <select class="form-select" id="class" name="subjects" required>
+                    <select class="form-select" id="class" name="subject" required>
                         <option value="" selected disabled>-- Select Subjects --</option>
                         @foreach($subjects as $subject)
                             <option value="{{$subject->id}}" {{ $upload->subject == $subject->id ? 'selected' : '' }}>{{$subject->subject}}</option>
