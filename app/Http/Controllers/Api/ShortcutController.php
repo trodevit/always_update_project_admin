@@ -20,9 +20,13 @@ class ShortcutController extends Controller
         return $this->successResponse($shortcut,'Shortcut List');
     }
 
-    public function hscshortcut($group)
+    public function hscshortcut($group,$hsc_year)
     {
-        $shortcut = PDFCourse::where('group', $group)->where('class_name','hsc')->where('types','technique')->get();
+        $shortcut = PDFCourse::where('group', $group)
+            ->where('class_name','hsc')
+            ->where('types','technique')
+            ->where('hsc_year',$hsc_year)
+            ->get();
 
         return $this->successResponse($shortcut,'Shortcut List');
     }
@@ -44,11 +48,11 @@ class ShortcutController extends Controller
         return $this->successResponse($shortcut,'All PDF List');
     }
 
-    public function hscallPDF($group, $question_types, $subject_id)
+    public function hscallPDF($group, $question_types, $subject_id,$hsc_year)
     {
         $shortcut = AllPDF::where('group', $group)->where('class_name','hsc')->where('types','all_pdf')
             ->where('question_types',$question_types)
-            ->where('subjects',$subject_id)
+            ->where('subjects',$subject_id)->where('hsc_year',$hsc_year)
             ->get();
 
         return $this->successResponse($shortcut,'All PDF List');

@@ -50,11 +50,11 @@ Route::post('/login',[DeviceController::class,'login']);
 
     Route::get('/class/{id}',[ClassController::class,'show']);
 
-    Route::get('/hsc/pdf/{group}',[PDFController::class,'hscpdf']);
+    Route::get('/hsc/pdf/{group}/{hsc_year}',[PDFController::class,'hscpdf']);
 
-    Route::get('/hsc/shortcut/{group}',[ShortcutController::class,'hscshortcut']);
+    Route::get('/hsc/shortcut/{group}/{hsc_year}',[ShortcutController::class,'hscshortcut']);
 
-    Route::get('/hsc/allpdf/{group}/{question_types}/{subject_id}',[ShortcutController::class,'hscallPDF']);
+    Route::get('/hsc/allpdf/{group}/{question_types}/{subject_id}/{hsc_year}',[ShortcutController::class,'hscallPDF']);
 
     Route::get('/hsc/class',[ShortcutController::class,'hscClassList']);
 //});
