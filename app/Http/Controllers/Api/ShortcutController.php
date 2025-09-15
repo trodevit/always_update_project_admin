@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\AllPDF;
 use App\Models\HonorsQuestion;
+use App\Models\HSCClass;
 use App\Models\PDFCourse;
 use App\Models\Subject;
 use App\Models\VideoCourse;
@@ -19,6 +20,13 @@ class ShortcutController extends Controller
         return $this->successResponse($shortcut,'Shortcut List');
     }
 
+    public function hscshortcut($group)
+    {
+        $shortcut = PDFCourse::where('group', $group)->where('class_name','hsc')->where('types','technique')->get();
+
+        return $this->successResponse($shortcut,'Shortcut List');
+    }
+
     public function videoindex($group)
     {
         $shortcut = PDFCourse::where('group', $group)->where('class_name','SSC')->where('types','video_technique')->get();
@@ -29,6 +37,16 @@ class ShortcutController extends Controller
     public function allPDF($group, $question_types, $subject_id)
     {
         $shortcut = AllPDF::where('group', $group)->where('class_name','SSC')->where('types','all_pdf')
+            ->where('question_types',$question_types)
+            ->where('subjects',$subject_id)
+            ->get();
+
+        return $this->successResponse($shortcut,'All PDF List');
+    }
+
+    public function hscallPDF($group, $question_types, $subject_id)
+    {
+        $shortcut = AllPDF::where('group', $group)->where('class_name','hsc')->where('types','all_pdf')
             ->where('question_types',$question_types)
             ->where('subjects',$subject_id)
             ->get();
@@ -83,6 +101,14 @@ class ShortcutController extends Controller
             ->get();
 
         return $this->successResponse($shortcut,'All PDF List');
+    }
+
+
+    public function hscClassList()
+    {
+        $class = HSCClass::all();
+
+        return $this->successResponse($class,'All Class List');
     }
 
 

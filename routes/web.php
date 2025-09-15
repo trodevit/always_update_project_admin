@@ -6,6 +6,10 @@ use App\Http\Controllers\Web\AllPDFController;
 use App\Http\Controllers\Web\DashboardController;
 use App\Http\Controllers\Web\DeviceController;
 use App\Http\Controllers\Web\HonorsQuestionController;
+use App\Http\Controllers\Web\HSCAllPDFController;
+use App\Http\Controllers\Web\HSCClassConroller;
+use App\Http\Controllers\Web\HSCPDFController;
+use App\Http\Controllers\Web\HSCShortcutController;
 use App\Http\Controllers\Web\NoticeController;
 use App\Http\Controllers\Web\PDFCourseController;
 use App\Http\Controllers\Web\ResultController;
@@ -102,6 +106,32 @@ Route::group(['middleware' => AdminAuth::class], function () {
     Route::get('/honors/course/question/{id}/edit',[HonorsQuestionController::class,'edit'])->name('honors.edit');
     Route::patch('/honors/course/question/{id}/update',[HonorsQuestionController::class,'update'])->name('honors.update');
     Route::delete('/honors/course/question/{id}/delete',[HonorsQuestionController::class,'destroy'])->name('honors.delete');
+
+    Route::get('/hsc/class/create',[HSCClassConroller::class,'create'])->name('hsc.class.create');
+    Route::post('/hsc/class',[HSCClassConroller::class,'store'])->name('hsc.class.store');
+    Route::put('/hsc/class/{id}',[HSCClassConroller::class,'update'])->name('hsc.class.update');
+    Route::delete('/hsc/class/{id}',[HSCClassConroller::class,'destroy'])->name('hsc.class.delete');
+
+    Route::get('/hsc/allpdf',[HSCAllPDFController::class,'index'])->name('hsc.allpdf');
+    Route::get('/hsc/allpdf/create',[HSCAllPDFController::class,'create'])->name('hsc.allpdf.create');
+    Route::post('/hsc/allpdf',[HSCAllPDFController::class,'store'])->name('hsc.allpdf.store');
+    Route::get('/hsc/allpdf/{id}',[HSCAllPDFController::class,'edit'])->name('hsc.allpdf.edit');
+    Route::patch('/hsc/allpdf/{id}',[HSCAllPDFController::class,'update'])->name('hsc.allpdf.update');
+    Route::delete('/hsc/allpdf/{id}',[HSCAllPDFController::class,'destroy'])->name('hsc.allpdf.delete');
+
+    Route::get('/hsc/pdf',[HSCPDFController::class,'index'])->name('hsc.pdf');
+    Route::get('/hsc/pdf/create',[HSCPDFController::class,'create'])->name('hsc.pdf.create');
+    Route::post('/hsc/pdf',[HSCPDFController::class,'store'])->name('hsc.pdf.store');
+    Route::get('/hsc/pdf/{id}',[HSCPDFController::class,'edit'])->name('hsc.pdf.edit');
+    Route::patch('/hsc/pdf/{id}',[HSCPDFController::class,'update'])->name('hsc.pdf.update');
+    Route::delete('/hsc/pdf/{id}',[HSCPDFController::class,'destroy'])->name('hsc.pdf.destroy');
+
+    Route::get('/hsc/shortcut',[HSCShortcutController::class,'index'])->name('hsc.shortcut');
+    Route::get('/hsc/shortcut/create',[HSCShortcutController::class,'create'])->name('hsc.shortcut.create');
+    Route::post('/hsc/shortcut',[HSCShortcutController::class,'store'])->name('hsc.shortcut.store');
+    Route::get('/hsc/shortcut/{id}',[HSCShortcutController::class,'edit'])->name('hsc.shortcut.edit');
+    Route::patch('/hsc/shortcut/{id}',[HSCShortcutController::class,'update'])->name('hsc.shortcut.update');
+    Route::delete('/hsc/shortcut/{id}',[HSCShortcutController::class,'destroy'])->name('hsc.shortcut.destroy');
 
     Route::get('/device_id',[DeviceController::class,'device_id'])->name('device_id');
     Route::post('/updatedeviceid/{device_id}',[DeviceController::class,'devicesUpdate'])->name('updatedeviceid');

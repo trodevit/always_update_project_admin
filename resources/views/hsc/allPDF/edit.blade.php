@@ -4,13 +4,22 @@
     <div class="container mt-5">
         <h2 class="mb-4">Edit {{$upload->title}}</h2>
 
-        <form action="{{route('course.SSC.All-PDF.update',$upload->id)}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('hsc.allpdf.update',$upload->id)}}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
             <input type="hidden" name="types" value="{{$upload->types}}">
             <input type="hidden" name="class_name" value="{{$upload->class_name}}">
             <!-- Dropdown: Class -->
+            <div class="mb-3">
+                <label for="class" class="form-label">Select Class</label>
+                <select class="form-select" id="class" name="hsc_year" required>
+                    <option value="" selected disabled>-- Select Question Types --</option>
+                    @foreach($hsc as $hssc)
+                        <option value="{{$hssc->id}}" {{ $upload->hsc_year == $hssc->id ? 'selected' : '' }}>{{$hssc->class_name}}</option>
+                    @endforeach
 
+                </select>
+            </div>
 
             <div class="mb-3">
                 <label for="class" class="form-label">Select Question Types</label>
@@ -81,6 +90,7 @@
                 document.getElementById('group').addEventListener('change', filterSubjects);
                 window.addEventListener('load', filterSubjects);
             </script>
+
 
             <!-- Title -->
             <div class="mb-3">

@@ -10,15 +10,7 @@
             <input type="hidden" name="types" value="{{$upload->types}}">
             <input type="hidden" name="class_name" value="{{$upload->class_name}}">
             <!-- Dropdown: Class -->
-            <div class="mb-3">
-                <label for="class" class="form-label">Select Group</label>
-                <select class="form-select" id="class" name="group" required>
-                    <option value="" selected disabled>-- Select Group --</option>
-                    <option value="science"{{ $upload->group == 'science' ? 'selected' : '' }}>Science</option>
-                    <option value="commerce"{{ $upload->group == 'commerce' ? 'selected' : '' }}>Commerce</option>
-                    <option value="arts"{{ $upload->group == 'arts' ? 'selected' : '' }}>Arts</option>
-                </select>
-            </div>
+
 
             <div class="mb-3">
                 <label for="class" class="form-label">Select Question Types</label>
@@ -31,20 +23,64 @@
             </div>
 
             <div class="mb-3">
-                <label for="class" class="form-label">Select Subjects</label>
-                @if($subjects)
-                    <select class="form-select" id="class" name="subjects" required>
-                        <option value="" selected disabled>-- Select Subjects --</option>
-                        @foreach($subjects as $subject)
-                            <option value="{{$subject->id}}" {{ $upload->subjects == $subject->id ? 'selected' : '' }}>{{$subject->subject}}</option>
-                        @endforeach
-                    </select>
+                <label for="group" class="form-label">Select Group</label>
+                <select class="form-select" id="group" name="group" required>
+                    <option value="" disabled>-- Select Group --</option>
+                    <option value="science" {{ $upload->group == 'science' ? 'selected' : '' }}>Science</option>
+                    <option value="commerce" {{ $upload->group == 'commerce' ? 'selected' : '' }}>Commerce</option>
+                    <option value="arts" {{ $upload->group == 'arts' ? 'selected' : '' }}>Arts</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="subjects" class="form-label">Select Subjects</label>
+                @if($subjects->count() > 0)
+                    <div class="d-flex gap-2">
+                        <select class="form-select" id="subjects" name="subjects" required>
+                            <option value="" disabled>-- Select Subjects --</option>
+                            @foreach($subjects as $subject)
+                                <option value="{{ $subject->id }}"
+                                        data-group="{{ $subject->group }}"
+                                    {{ $upload->subjects == $subject->id ? 'selected' : '' }}>
+                                    {{ $subject->subject }}
+                                </option>
+                            @endforeach
+                        </select>
+                        <a href="{{ route('subjects.create') }}" class="btn btn-sm btn-success">
+                            Add More Subjects
+                        </a>
+                    </div>
                 @else
                     <p class="text-danger">
                         You currently have no subjects. Please add subjects first from the <a href="{{ route('subjects.create') }}">Subjects</a> page.
                     </p>
                 @endif
             </div>
+
+            <script>
+                function filterSubjects() {
+                    let selectedGroup = document.getElementById('group').value;
+                    let subjectSelect = document.getElementById('subjects');
+                    let selectedSubject = "{{ $upload->subjects }}"; // keep the previous subject id
+
+                    for (let option of subjectSelect.options) {
+                        if (option.value === "") continue;
+                        if (option.getAttribute('data-group') === selectedGroup) {
+                            option.style.display = 'block';
+                        } else {
+                            option.style.display = 'none';
+                            // remove selection if not in selected group
+                            if (option.value == selectedSubject) {
+                                subjectSelect.value = "";
+                            }
+                        }
+                    }
+                }
+
+                // Run filter on page load & when group changes
+                document.getElementById('group').addEventListener('change', filterSubjects);
+                window.addEventListener('load', filterSubjects);
+            </script>
 
             <!-- Title -->
             <div class="mb-3">

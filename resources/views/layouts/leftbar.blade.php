@@ -80,10 +80,16 @@
                                     <div class="collapse" id="hscMenu">
                                         <ul class="nav flex-column ms-3">
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#">PDF Course</a>
+                                                <a class="nav-link" href="{{route('hsc.class.create')}}">Class Create</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#">Video Course</a>
+                                                <a class="nav-link" href="{{ route('hsc.pdf.create') }}">PDF Course</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{route('hsc.shortcut.create')}}">Shortcut Technique</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{route('hsc.allpdf.create')}}">All PDF</a>
                                             </li>
                                         </ul>
                                     </div>

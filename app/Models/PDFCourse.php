@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class PDFCourse extends Model
 {
     protected $fillable = [
-        'class_name','types','group','title','thumbnail','url','pdf'
+        'class_name','types','group','title','thumbnail','url','pdf','hsc_year'
     ];
 }

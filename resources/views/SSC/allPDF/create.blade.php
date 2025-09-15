@@ -10,15 +10,7 @@
             <input type="hidden" name="types" value="all_pdf">
             <input type="hidden" name="class_name" value="SSC">
             <!-- Dropdown: Class -->
-            <div class="mb-3">
-                <label for="class" class="form-label">Select Group</label>
-                <select class="form-select" id="class" name="group" required>
-                    <option value="" selected disabled>-- Select Group --</option>
-                    <option value="science">Science</option>
-                    <option value="commerce">Commerce</option>
-                    <option value="arts">Arts</option>
-                </select>
-            </div>
+
 
             <div class="mb-3">
                 <label for="class" class="form-label">Select Question Types</label>
@@ -31,13 +23,23 @@
             </div>
 
             <div class="mb-3">
-                <label for="class" class="form-label">Select Subjects</label>
+                <label for="group" class="form-label">Select Group</label>
+                <select class="form-select" id="group" name="group" required>
+                    <option value="" selected disabled>-- Select Group --</option>
+                    <option value="science">Science</option>
+                    <option value="commerce">Commerce</option>
+                    <option value="arts">Arts</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="subjects" class="form-label">Select Subjects</label>
                 @if($subjects->count() > 0)
                     <div class="d-flex gap-2">
-                        <select class="form-select" id="class" name="subjects" required>
+                        <select class="form-select" id="subjects" name="subjects" required>
                             <option value="" selected disabled>-- Select Subjects --</option>
                             @foreach($subjects as $subject)
-                                <option value="{{$subject->id}}">{{$subject->subject}}</option>
+                                <option value="{{$subject->id}}" data-group="{{$subject->group}}">{{$subject->subject}}</option>
                             @endforeach
                         </select>
                         <a href="{{ route('subjects.create') }}" class="btn btn-sm btn-success">
@@ -50,6 +52,22 @@
                     </p>
                 @endif
             </div>
+
+            <script>
+                document.getElementById('group').addEventListener('change', function () {
+                    let selectedGroup = this.value;
+                    let subjectSelect = document.getElementById('subjects');
+
+                    // Loop through all options
+                    for (let option of subjectSelect.options) {
+                        if (option.value === "") continue; // keep default option
+                        option.style.display = (option.getAttribute('data-group') === selectedGroup) ? 'block' : 'none';
+                    }
+
+                    // Reset selected subject
+                    subjectSelect.value = "";
+                });
+            </script>
 
 
             <!-- Title -->

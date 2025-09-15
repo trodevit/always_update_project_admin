@@ -4,13 +4,21 @@
     <div class="container mt-5">
         <h2 class="mb-4">Add Course</h2>
 
-        <form action="{{route('course.SSC.All-PDF.store')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('hsc.allpdf.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
 
-            <input type="hidden" name="types" value="video_all_pdf">
-            <input type="hidden" name="class_name" value="SSC">
+            <input type="hidden" name="types" value="all_pdf">
+            <input type="hidden" name="class_name" value="hsc">
+            <div class="mb-3">
+                <label for="class" class="form-label">Select Class</label>
+                <select class="form-select" id="class" name="hsc_year" required>
+                    <option value="" selected disabled>-- Select Class --</option>
+                    @foreach($class as $classes)
+                        <option value="{{$classes->id}}">{{$classes->class_name}}</option>
+                    @endforeach
+                </select>
+            </div>
             <!-- Dropdown: Class -->
-
 
             <div class="mb-3">
                 <label for="class" class="form-label">Select Question Types</label>
@@ -69,6 +77,8 @@
                 });
             </script>
 
+
+
             <!-- Title -->
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
@@ -95,7 +105,7 @@
 
             <!-- Submit Button -->
             <button type="submit" class="btn btn-primary">Submit</button>
-            <a href="{{route('course.SSC.All-PDF.video')}}" class="btn btn-info">All List</a>
+            <a href="{{route('hsc.allpdf')}}" class="btn btn-info">All List</a>
         </form>
     </div>
 @endsection
