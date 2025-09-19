@@ -8,11 +8,12 @@ use Illuminate\Http\Request;
 
 class ClassController extends Controller
 {
-    public function index($class_name, $types)
+    public function rubayet($class_name, $check)
     {
-        $suggestion = Suggestion::where('class_name',$class_name)->where('types',$types)->get();
+//        dd($class_name, $check);
+        $suggestion = Suggestion::where('class_name',$class_name)->where('types',$check)->get();
 
-        return $this->successResponse($suggestion, ucfirst($types) . ' successfully retrive from ' . strtoupper($class_name));
+        return $this->successResponse($suggestion, ucfirst($check) . ' successfully retrive from ' . strtoupper($class_name));
     }
 
     public function show($id){

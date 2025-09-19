@@ -14,7 +14,7 @@ class PDFController extends Controller
 
     public function classGroup($group)
     {
-
+//        dd();
         $pdf = PDFCourse::where('class_name', 'SSC')
             ->where('types', 'pdf')
             ->where('group', $group)
@@ -26,6 +26,7 @@ class PDFController extends Controller
 
     public function videoclassGroup($group)
     {
+//        dd();
         $pdf = PDFCourse::where('class_name','SSC')
             ->where('types','video_pdf')
             ->where('group',$group)
@@ -35,6 +36,7 @@ class PDFController extends Controller
 
     public function honorsGroup($group)
     {
+//        dd();
         $pdf = PDFCourse::where('class_name','honors')
             ->where('types','grppdf')
             ->where('group',$group)
@@ -42,14 +44,16 @@ class PDFController extends Controller
         return $this->successResponse($pdf,'All PDF From SSC');
     }
 
-    public function classID($id)
-    {
-        $pdf = PDFCourse::find($id);
-        return $this->successResponse($pdf,'All PDF From SSC');
-    }
+//    public function classID($id)
+//    {
+//        dd();
+//        $pdf = PDFCourse::find($id);
+//        return $this->successResponse($pdf,'All PDF From SSC');
+//    }
 
     public function hscpdf($group,$hsc_year)
     {
+//        dd();
         $pdf = PDFCourse::where('class_name', 'hsc')
             ->where('types', 'pdf')
             ->where('group', $group)

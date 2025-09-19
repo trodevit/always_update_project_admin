@@ -19,6 +19,8 @@ Route::post('/device-id',[FeatuerController::class,'addDeviceId']);
 
 Route::post('/login',[DeviceController::class,'login']);
 
+Route::get('{class_name}/{check}',[ClassController::class,'rubayet']);
+
 //Route::group(['middleware' =>  CheckDeviceId::class], function () {
     Route::get('/class/ssc/pdf/{group}',[PDFController::class,'classGroup']);
 
@@ -46,7 +48,7 @@ Route::post('/login',[DeviceController::class,'login']);
 
     Route::get('/class/ssc/video/{group}/{subject_id}',[ShortcutController::class,'videoCourse']);
 
-    Route::get('/class/{class_name}/{types}',[ClassController::class,'index']);
+
 
     Route::get('/class/{id}',[ClassController::class,'show']);
 
