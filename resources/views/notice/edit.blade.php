@@ -47,13 +47,13 @@
             </div>
 
             <!-- PDF -->
-            <div class="mb-3">
-                <label for="pdf" class="form-label">PDF</label>
-                <input type="file" class="form-control" id="pdf" name="pdf" accept="application/pdf">
-                @if($upload->pdf)
-                    <a href="{{ asset($upload->pdf) }}" target="_blank" class="d-block mt-2">View Existing PDF</a>
-                @endif
-            </div>
+{{--            <div class="mb-3">--}}
+{{--                <label for="pdf" class="form-label">PDF</label>--}}
+{{--                <input type="file" class="form-control" id="pdf" name="pdf" accept="application/pdf">--}}
+{{--                @if($upload->pdf)--}}
+{{--                    <a href="{{ asset($upload->pdf) }}" target="_blank" class="d-block mt-2">View Existing PDF</a>--}}
+{{--                @endif--}}
+{{--            </div>--}}
 
             <!-- Submit Button -->
             <button type="submit" class="btn btn-primary">Update</button>

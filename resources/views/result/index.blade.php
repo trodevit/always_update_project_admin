@@ -11,7 +11,7 @@
                 <th>Title</th>
                 <th>Thumbnail</th>
                 <th>Description</th>
-                <th>PDF</th>
+{{--                <th>PDF</th>--}}
                 <th>Action</th>
             </tr>
             </thead>
@@ -31,7 +31,7 @@
                     </a>
                 </td>
                 <td>{{ $course->description }}</td>
-                <td><a href="{{ asset($course->pdf) }}" target="_blank">Download PDF</a></td>
+{{--                <td><a href="{{ asset($course->pdf) }}" target="_blank">Download PDF</a></td>--}}
                 <td>
                     <a href="{{ route('result.edit', $course->id) }}" class="btn btn-sm btn-primary">Edit</a>
                     <form id="delete-form-{{ $course->id }}" action="{{ route('result.delete', $course->id) }}" method="POST" style="display:inline;">

@@ -40,7 +40,7 @@ class NoticeController extends Controller
                 'title'=>'required',
                 'description'=>'required',
                 'image'=>'required',
-                'pdf'=>'required|mimes:pdf',
+//                'pdf'=>'required|mimes:pdf',
                 'official_url'=>'required'
             ]);
 
@@ -94,7 +94,7 @@ class NoticeController extends Controller
                 'title'=>'sometimes|required',
                 'description'=>'sometimes|required',
                 'image'=>'sometimes|required',
-                'pdf'=>'sometimes|required|mimes:pdf',
+//                'pdf'=>'sometimes|required|mimes:pdf',
                 'official_url'=>'sometimes|required'
             ]);
 

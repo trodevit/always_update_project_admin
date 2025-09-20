@@ -11,7 +11,7 @@
                 <th>Title</th>
                 <th>Thumbnail</th>
                 <th>Description</th>
-                <th>PDF</th>
+{{--                <th>PDF</th>--}}
                 <th>Official URL</th>
                 <th>Action</th>
             </tr>
@@ -32,7 +32,7 @@
                     </a>
                 </td>
                 <td>{{ $course->description }}</td>
-                <td><a href="{{ asset($course->pdf) }}" target="_blank">Download PDF</a></td>
+{{--                <td><a href="{{ asset($course->pdf) }}" target="_blank">Download PDF</a></td>--}}
                 <td>
                     <a href="{{ asset($course->official_url) }}" target="_blank">Visit URL</a>
                 </td>

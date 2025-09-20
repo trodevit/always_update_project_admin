@@ -45,10 +45,10 @@
             </div>
 
             <!-- PDF -->
-            <div class="mb-3">
-                <label for="pdf" class="form-label">PDF</label>
-                <input type="file" class="form-control" id="pdf" name="pdf" accept="application/pdf" required>
-            </div>
+{{--            <div class="mb-3">--}}
+{{--                <label for="pdf" class="form-label">PDF</label>--}}
+{{--                <input type="file" class="form-control" id="pdf" name="pdf" accept="application/pdf" required>--}}
+{{--            </div>--}}
 
             <!-- Submit Button -->
             <button type="submit" class="btn btn-primary">Submit</button>
