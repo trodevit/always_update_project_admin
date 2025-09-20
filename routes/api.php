@@ -19,9 +19,17 @@ Route::post('/device-id',[FeatuerController::class,'addDeviceId']);
 
 Route::post('/login',[DeviceController::class,'login']);
 
+Route::get('/ssc/subjects',[ShortcutController::class,'subjects']);
+
+Route::get('/hsc/subjects',[ShortcutController::class,'hscsubjects']);
+
+Route::get('/honors/subjects',[ShortcutController::class,'honorssubjects']);
+
+Route::get('/hsc/class',[ShortcutController::class,'hscClassList']);
+
 Route::get('{class_name}/{check}',[ClassController::class,'rubayet']);
 
-//Route::group(['middleware' =>  CheckDeviceId::class], function () {
+
     Route::get('/class/ssc/pdf/{group}',[PDFController::class,'classGroup']);
 
     Route::get('/class/ssc/video/{group}',[PDFController::class,'videoclassGroup']);
@@ -40,11 +48,8 @@ Route::get('{class_name}/{check}',[ClassController::class,'rubayet']);
 
     Route::get('/class/ssc/{id}',[PDFController::class,'classID']);
 
-    Route::get('/ssc/subjects',[ShortcutController::class,'subjects']);
 
-    Route::get('/hsc/subjects',[ShortcutController::class,'hscsubjects']);
 
-    Route::get('/honors/subjects',[ShortcutController::class,'honorssubjects']);
 
     Route::get('/class/ssc/video/{group}/{subject_id}',[ShortcutController::class,'videoCourse']);
 
@@ -58,5 +63,6 @@ Route::get('{class_name}/{check}',[ClassController::class,'rubayet']);
 
     Route::get('/hsc/allpdf/{group}/{question_types}/{subject_id}/{hsc_year}',[ShortcutController::class,'hscallPDF']);
 
-    Route::get('/hsc/class',[ShortcutController::class,'hscClassList']);
-//});
+
+
+

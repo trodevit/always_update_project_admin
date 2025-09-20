@@ -10,6 +10,7 @@ class ClassController extends Controller
 {
     public function rubayet($class_name, $check)
     {
+//        dd();
 //        dd($class_name, $check);
         $suggestion = Suggestion::where('class_name',$class_name)->where('types',$check)->get();
 
@@ -17,8 +18,10 @@ class ClassController extends Controller
     }
 
     public function show($id){
+
         $suggestion = Suggestion::find($id);
 
+//        dd($suggestion);
         return $this->successResponse($suggestion, 'Retrive successfully');
     }
 }

@@ -16,7 +16,7 @@ class ShortcutController extends Controller
     public function index($group)
     {
         $shortcut = PDFCourse::where('group', $group)->where('class_name','SSC')->where('types','technique')->get();
-
+//        dd($shortcut);
         return $this->successResponse($shortcut,'Shortcut List');
     }
 
@@ -27,14 +27,14 @@ class ShortcutController extends Controller
             ->where('types','technique')
             ->where('hsc_year',$hsc_year)
             ->get();
-
+//        dd($shortcut);
         return $this->successResponse($shortcut,'Shortcut List');
     }
 
     public function videoindex($group)
     {
         $shortcut = PDFCourse::where('group', $group)->where('class_name','SSC')->where('types','video_technique')->get();
-
+//        dd($shortcut);
         return $this->successResponse($shortcut,'Shortcut List');
     }
 
@@ -44,7 +44,7 @@ class ShortcutController extends Controller
             ->where('question_types',$question_types)
             ->where('subjects',$subject_id)
             ->get();
-
+//        dd($shortcut);
         return $this->successResponse($shortcut,'All PDF List');
     }
 
@@ -55,6 +55,7 @@ class ShortcutController extends Controller
             ->where('subjects',$subject_id)->where('hsc_year',$hsc_year)
             ->get();
 
+//        dd($shortcut);
         return $this->successResponse($shortcut,'All PDF List');
     }
 
@@ -65,27 +66,31 @@ class ShortcutController extends Controller
             ->where('subjects',$subject_id)
             ->get();
 
+//        dd($shortcut);
+
         return $this->successResponse($shortcut,'All PDF List');
     }
 
     public function subjects()
     {
-        $subjects = Subject::where('class','ssc')->get();
 
+        $subjects = Subject::where('class','ssc')->get();
+//        dd($subjects);
         return $this->successResponse($subjects,'Subject List');
     }
 
     public function hscsubjects()
     {
-        $subjects = Subject::where('class','hsc')->get();
 
+        $subjects = Subject::where('class','hsc')->get();
+//        dd($subjects);
         return $this->successResponse($subjects,'Subject List');
     }
 
     public function honorssubjects()
     {
         $subjects = Subject::where('class','honors')->get();
-
+//        dd($subjects);
         return $this->successResponse($subjects,'Subject List');
     }
 
@@ -95,6 +100,7 @@ class ShortcutController extends Controller
             ->where('subjects',$subject_id)
             ->get();
 
+//        dd($shortcut);
         return $this->successResponse($shortcut,'All PDF List');
     }
 
@@ -103,7 +109,7 @@ class ShortcutController extends Controller
         $shortcut = HonorsQuestion::where('group', $group)->where('class_name','honors')->where('question','question_pdf')
             ->where('subject',$subject_id)
             ->get();
-
+//        dd($shortcut);
         return $this->successResponse($shortcut,'All PDF List');
     }
 
@@ -112,6 +118,7 @@ class ShortcutController extends Controller
     {
         $class = HSCClass::all();
 
+//        dd($class);
         return $this->successResponse($class,'All Class List');
     }
 
