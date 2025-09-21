@@ -54,7 +54,7 @@ class FeatuerController extends Controller
 
         $user->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('success','Device ID Deleted Successfully');
     }
 
 }
