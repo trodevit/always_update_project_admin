@@ -14,7 +14,7 @@
     <meta name="language" content="en" />
     <meta name="revisit-after" content="1 day" />
 
-    <meta property="og:title" content="Always Update" />
+    <meta property="og:title" content="Always Update - Get the latest suggestion, scholarship, result and notice from SSC, HSC, College Admission" />
     <meta property="og:description" content="Get the latest suggestion, scholarship, result and notice from SSC, HSC, College Admission. Stay ahead with fresh content daily." />
     <meta property="og:image" content="https://always-update.zobayerdev.top/Always.jpg" />
     <meta property="og:url" content="https://always-update.zobayerdev.top/" />
@@ -22,7 +22,7 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Always Update" />
+    <meta name="twitter:title" content="Always Update - Get the latest suggestion, scholarship, result and notice from SSC, HSC, College Admission" />
     <meta name="twitter:description" content="Get the latest suggestion, scholarship, result and notice from SSC, HSC, College Admission. Stay ahead with fresh content daily." />
     <meta name="twitter:image" content="https://always-update.zobayerdev.top/Always.jpg" />
 
