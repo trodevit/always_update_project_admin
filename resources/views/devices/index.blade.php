@@ -5,14 +5,14 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="page-title-box d-md-flex justify-content-md-between align-items-center">
-                    <h4 class="page-title">Elements</h4>
+                    <h4 class="page-title">Device</h4>
                     <div class="">
                         <ol class="breadcrumb mb-0">
-                            <li class="breadcrumb-item"><a href="#">Approx</a>
+                            <li class="breadcrumb-item"><a href="#">{{config('app.name')}}</a>
                             </li><!--end nav-item-->
-                            <li class="breadcrumb-item"><a href="#">Forms</a>
+                            <li class="breadcrumb-item"><a href="#">Device</a>
                             </li><!--end nav-item-->
-                            <li class="breadcrumb-item active">Elements</li>
+                            <li class="breadcrumb-item active">Device ID List</li>
                         </ol>
                     </div>
                 </div><!--end page-title-box-->

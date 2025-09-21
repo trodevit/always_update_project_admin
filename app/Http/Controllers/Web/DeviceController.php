@@ -69,7 +69,7 @@ class DeviceController extends Controller
         ]);
 
         // Attempt to log in the user
-        if (!Auth::attempt(['email' => $data['email'], 'password' => $data['password'], 'device_id'=>$data['device_id']])) {
+        if (!Auth::attempt(['email' => $data['email'], 'password' => $data['password']])) {
             return response()->json([
                 'status' => false,
                 'message' => 'Invalid credentials'

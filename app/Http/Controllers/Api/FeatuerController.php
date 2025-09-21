@@ -48,5 +48,13 @@ class FeatuerController extends Controller
         return response()->json($notifications);
     }
 
+    public function delete($id)
+    {
+        $user = User::find($id);
+
+        $user->delete();
+
+        return redirect()->back();
+    }
 
 }
