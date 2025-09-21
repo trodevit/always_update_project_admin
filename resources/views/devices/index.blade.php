@@ -72,7 +72,7 @@
 
 
                             <td>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-warning">Submit</button>
                             </td>
                         </form>
 
