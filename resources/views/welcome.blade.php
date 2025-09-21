@@ -14,17 +14,28 @@
     <meta name="language" content="en" />
     <meta name="revisit-after" content="1 day" />
 
-    <meta property="og:title" content="Always Update - Get the latest suggestion, scholarship, result and notice from SSC, HSC, College Admission" />
-    <meta property="og:description" content="Get the latest suggestion, scholarship, result and notice from SSC, HSC, College Admission. Stay ahead with fresh content daily." />
-    <meta property="og:image" content="https://always-update.zobayerdev.top/Always.jpg" />
-    <meta property="og:url" content="https://always-update.zobayerdev.top/" />
+    <meta property="og:site_name" content="Always Update" />
     <meta property="og:type" content="website" />
+    <meta property="og:title" content="Always Update — Latest suggestions, scholarships, results & notices (SSC, HSC, College Admission)" />
+    <meta property="og:description" content="Get the latest suggestions, scholarships, results and notices for SSC, HSC and College Admission. Stay updated daily with Always Update." />
+    <meta property="og:url" content="https://always-update.zobayerdev.top/" />
+    <meta property="og:image" content="https://always-update.zobayerdev.top/Always.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="bn_BD" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Always Update - Get the latest suggestion, scholarship, result and notice from SSC, HSC, College Admission" />
-    <meta name="twitter:description" content="Get the latest suggestion, scholarship, result and notice from SSC, HSC, College Admission. Stay ahead with fresh content daily." />
+    <meta name="twitter:title" content="Always Update — Latest suggestions, scholarships, results & notices (SSC, HSC, College Admission)" />
+    <meta name="twitter:description" content="Get the latest suggestions, scholarships, results and notices for SSC, HSC and College Admission. Stay updated daily with Always Update." />
     <meta name="twitter:image" content="https://always-update.zobayerdev.top/Always.jpg" />
+
+    <meta name="theme-color" content="#2d6cdf" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://always-update.zobayerdev.top/favicon-32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://always-update.zobayerdev.top/favicon-16.ico">
+  <link rel="apple-touch-icon" href="https://always-update.zobayerdev.top/favicon-32">
+
 
     <style>
         :root {
