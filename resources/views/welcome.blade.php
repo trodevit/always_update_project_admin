@@ -5,6 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Always Update</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+
+    <meta name="description" content="Always Update - Get the latest suggestion, scholarship, result and notice from SSC, HSC, College Admission. Stay ahead with fresh content daily." />
+    <meta name="keywords" content="Always Update, suggestion, scholarship, result, notice, ssc, hsc, bsc, college admission, nsu, bubt" />
+    <meta name="author" content="Always Update Team, Sheikh Md. Rubayet Islam Ifti" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="English" />
+    <meta name="revisit-after" content="1 day" />
+
+    <meta property="og:title" content="Always Update" />
+    <meta property="og:description" content="Get the latest suggestion, scholarship, result and notice from SSC, HSC, College Admission. Stay ahead with fresh content daily." />
+    <meta property="og:image" content="https://always-update.zobayerdev.top/Always.jpg" />
+    <meta property="og:url" content="https://always-update.zobayerdev.top/" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Always Update" />
+    <meta name="twitter:description" content="Get the latest suggestion, scholarship, result and notice from SSC, HSC, College Admission. Stay ahead with fresh content daily." />
+    <meta name="twitter:image" content="https://always-update.zobayerdev.top/Always.jpg" />
+
     <style>
         :root {
             --brand: #2d6cdf;
