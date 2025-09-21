@@ -11,7 +11,7 @@
                 <th>Groups</th>
                 <th>Subjects</th>
                 <th>Title</th>
-                <th>Video Link</th>
+                <th>Image</th>
                 <th>PDF</th>
                 <th>Action</th>
             </tr>
