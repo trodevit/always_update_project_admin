@@ -133,6 +133,7 @@ Route::group(['middleware' => AdminAuth::class], function () {
     Route::patch('/hsc/shortcut/{id}',[HSCShortcutController::class,'update'])->name('hsc.shortcut.update');
     Route::delete('/hsc/shortcut/{id}',[HSCShortcutController::class,'destroy'])->name('hsc.shortcut.destroy');
 
+    Route::get('/device/list',[DeviceController::class,'deviceList'])->name('device.search');
     Route::get('/device_id',[DeviceController::class,'device_id'])->name('device_id');
     Route::post('/updatedeviceid/{device_id}',[DeviceController::class,'devicesUpdate'])->name('updatedeviceid');
     Route::delete('/delete/device/{id}',[\App\Http\Controllers\Api\FeatuerController::class,'delete'])->name('delete.device');

@@ -18,6 +18,24 @@ class DeviceController extends Controller
         return view('devices.index', ['device' => $device]);
     }
 
+    public function deviceList(Request $request)
+    {
+        $search = $request->input('search');
+
+        $device = User::query()
+            ->when($search, function ($query, $search) {
+                return $query->where('device_id', 'like', "%{$search}%")
+                    ->orWhere('device_name', 'like', "%{$search}%")
+                    ->orWhere('email', 'like', "%{$search}%");
+            })
+            ->orderBy('id', 'desc')
+            ->get();
+
+        $totalResults = $device->count();
+        return view('devices.index', ['device' => $device,'totalResults' => $totalResults,'search' => $search]);
+    }
+
+
     public function devicesUpdate(Request $request, string $device_id)
     {
         try {

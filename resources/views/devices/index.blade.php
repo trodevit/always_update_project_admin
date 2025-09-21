@@ -8,26 +8,39 @@
                     <h4 class="page-title">Device</h4>
                     <div class="">
                         <ol class="breadcrumb mb-0">
-                            <li class="breadcrumb-item"><a href="#">{{config('app.name')}}</a>
-                            </li><!--end nav-item-->
-                            <li class="breadcrumb-item"><a href="#">Device</a>
-                            </li><!--end nav-item-->
+                            <li class="breadcrumb-item"><a href="#">{{config('app.name')}}</a></li>
+                            <li class="breadcrumb-item"><a href="#">Device</a></li>
                             <li class="breadcrumb-item active">Device ID List</li>
                         </ol>
                     </div>
-                </div><!--end page-title-box-->
-            </div><!--end col-->
+                </div>
+            </div>
         </div>
+
         <div class="row mt-3 mb-3">
             <div class="col-md-6">
-                <form action="#" method="GET" class="d-flex">
-                    <input type="text" name="search" class="form-control me-2"
-                           placeholder="Search by Device ID, Name, or Email"
+                @if(isset($search) && $search != '')
+                    <p class="mb-0">
+                        Showing <strong>{{ $totalResults }}</strong> result(s) for "<strong>{{ $search }}</strong>"
+                    </p>
+                @else
+                    <p class="mb-0">
+                        Total Devices: <strong>{{ $totalResults ?? $device->count() }}</strong>
+                    </p>
+                @endif
+            </div>
+
+            <div class="col-md-4 d-flex justify-content-end ms-auto">
+                <form action="{{ route('device.search') }}" method="GET" class="d-flex w-100" style="max-width: 300px;">
+                    <input type="text" name="search" class="form-control form-control-sm me-2"
+                           placeholder="Search..."
                            value="{{ request('search') }}">
-                    <button type="submit" class="btn btn-primary">Search</button>
+                    <button type="submit" class="btn btn-primary btn-sm">Search</button>
                 </form>
             </div>
         </div>
+
+
         <div class="table-responsive mt-4">
             <table class="table table-bordered table-striped">
                 <thead class="table-dark">
@@ -39,13 +52,13 @@
                     <th>Password</th>
                     <th>Visited Count</th>
                     <th>Created At</th>
-                    <th>Levels</th> <!-- New column for checkboxes -->
+                    <th>Levels</th>
                     <th>Update</th>
                     <th>Delete</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($device as $devices)
+                @forelse($device as $devices)
                     <tr>
                         <form action="{{route('updatedeviceid',['device_id'=>$devices->id])}}" method="POST">
                             @csrf
@@ -61,25 +74,20 @@
                             <td>{{$devices->login_count}}</td>
                             <td>{{$devices->created_at}}</td>
 
-                            <!-- Checkboxes for SSC, HSC, Honors -->
                             <td>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="ssc" value="1"
-                                        {{ old('ssc', $devices->ssc) ? 'checked' : '' }}>
+                                    <input class="form-check-input" type="checkbox" name="ssc" value="1" {{ old('ssc', $devices->ssc) ? 'checked' : '' }}>
                                     <label class="form-check-label">SSC</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="hsc" value="1"
-                                        {{ old('hsc', $devices->hsc) ? 'checked' : '' }}>
+                                    <input class="form-check-input" type="checkbox" name="hsc" value="1" {{ old('hsc', $devices->hsc) ? 'checked' : '' }}>
                                     <label class="form-check-label">HSC</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="honors" value="1"
-                                        {{ old('honors', $devices->honors) ? 'checked' : '' }}>
+                                    <input class="form-check-input" type="checkbox" name="honors" value="1" {{ old('honors', $devices->honors) ? 'checked' : '' }}>
                                     <label class="form-check-label">Honors</label>
                                 </div>
                             </td>
-
 
                             <td>
                                 <button type="submit" class="btn btn-warning">Submit</button>
@@ -87,12 +95,10 @@
                         </form>
 
                         <td>
-                            <!-- Delete button triggers modal -->
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $devices->id }}">
                                 Delete
                             </button>
 
-                            <!-- Modal -->
                             <div class="modal fade" id="deleteModal{{ $devices->id }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ $devices->id }}" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
@@ -114,13 +120,15 @@
                                     </div>
                                 </div>
                             </div>
-
                         </td>
                     </tr>
-                @endforeach
+                @empty
+                    <tr>
+                        <td colspan="10" class="text-center">No Devices Found</td>
+                    </tr>
+                @endforelse
                 </tbody>
             </table>
         </div>
-
     </div>
 @endsection
