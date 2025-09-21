@@ -12,6 +12,7 @@
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
 
+    <script src="https://kit.fontawesome.com/a87236255f.js" crossorigin="anonymous"></script>
     <style>
         :root {
             --brand:#2d6cdf; --brand-600:#1f56c1; --radius:14px;
@@ -96,7 +97,7 @@
                 <label for="password" class="form-label">Password</label>
                 <div class="input-group">
                     <input type="password" class="form-control" id="password" name="password" placeholder="••••••••" required>
-                    <button class="btn btn-outline-secondary" type="button" id="togglePassword" aria-label="Show password"><i class="mdi mdi-eye-outline" aria-hidden="true"></i></button>
+                    <button class="btn btn-outline-secondary" type="button" id="togglePassword" aria-label="Show password"><i class="fa-solid fa-eye" aria-hidden="true"></i></button>
                     <div class="invalid-feedback">Password is required.</div>
                 </div>
             </div>
@@ -137,7 +138,7 @@
         toggleBtn.addEventListener('click', function(){
             const isPw = passwordInput.type === 'password';
             passwordInput.type = isPw ? 'text' : 'password';
-            this.innerHTML = isPw ? '<i class="mdi mdi-eye-off-outline" aria-hidden="true"></i>' : '<i class="mdi mdi-eye-outline" aria-hidden="true"></i>';
+            this.innerHTML = isPw ? '<i class="fa-solid fa-eye-slash" aria-hidden="true"></i>' : '<i class="fa-solid fa-eye" aria-hidden="true"></i>';
             this.setAttribute('aria-label', isPw ? 'Hide password' : 'Show password');
         });
     })();
