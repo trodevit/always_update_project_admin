@@ -128,7 +128,7 @@ class AllPDFController extends Controller
 
             $upload->update($data);
 
-            if ($upload->type == 'all_pdf') {
+            if ($data['types'] == 'all_pdf') {
                 return redirect()->route('course.SSC.All-PDF');
             }
             else{

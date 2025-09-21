@@ -87,6 +87,7 @@ class PDFCourseController extends Controller
                 'pdf' => 'sometimes|required|mimes:pdf'
             ]);
 
+//            dd($data['types']);
             $upload = PDFCourse::find($id);
 
             if($request->hasFile('thumbnail')) {
@@ -98,10 +99,10 @@ class PDFCourseController extends Controller
 
             $upload->update($data);
 
-            if ($upload->type == 'pdf') {
+            if ($data['types'] == 'pdf') {
                 return redirect()->route('course.SSC');
             }
-            elseif ($upload->types == 'grppdf'){
+            elseif ($data['types'] == 'grppdf'){
                 return redirect()->route('course.honors');
             }
             else{
