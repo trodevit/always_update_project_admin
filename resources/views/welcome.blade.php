@@ -11,7 +11,7 @@
     <meta name="keywords" content="Always Update, suggestion, scholarship, result, notice, ssc, hsc, bsc, college admission, nsu, bubt" />
     <meta name="author" content="Always Update Team, Sheikh Md. Rubayet Islam Ifti" />
     <meta name="robots" content="index, follow" />
-    <meta name="language" content="English" />
+    <meta name="language" content="en" />
     <meta name="revisit-after" content="1 day" />
 
     <meta property="og:title" content="Always Update" />
