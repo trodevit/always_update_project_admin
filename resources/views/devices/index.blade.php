@@ -18,6 +18,16 @@
                 </div><!--end page-title-box-->
             </div><!--end col-->
         </div>
+        <div class="row mt-3 mb-3">
+            <div class="col-md-6">
+                <form action="#" method="GET" class="d-flex">
+                    <input type="text" name="search" class="form-control me-2"
+                           placeholder="Search by Device ID, Name, or Email"
+                           value="{{ request('search') }}">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </form>
+            </div>
+        </div>
         <div class="table-responsive mt-4">
             <table class="table table-bordered table-striped">
                 <thead class="table-dark">
