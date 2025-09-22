@@ -254,7 +254,7 @@
         <h1 class="hero-title">Always Update</h1>
         <p class="hero-subtitle">Get the latest suggestions, scholarships, results, and notices — all in one place.</p>
         <div class="download-buttons" aria-label="Download app">
-            <a class="badge" href="#" target="_blank" rel="noopener">
+            <a class="badge" href="https://play.google.com/store/apps/details?id=com.trodevit.alwaysupdate.always_update" target="_blank" rel="noopener">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play">
             </a>
             <!--
